@@ -1,0 +1,340 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="4.0" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+  <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/Common.xml">
+    <edmx:Include Alias="Common" Namespace="com.sap.vocabularies.Common.v1"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="https://oasis-tcs.github.io/odata-vocabularies/vocabularies/Org.OData.Core.V1.xml">
+    <edmx:Include Alias="Core" Namespace="Org.OData.Core.V1"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/UI.xml">
+    <edmx:Include Alias="UI" Namespace="com.sap.vocabularies.UI.v1"/>
+  </edmx:Reference>
+  <edmx:DataServices>
+    <Schema Namespace="EmployeeService" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+      <EntityContainer Name="EntityContainer">
+        <EntitySet Name="Emp2Skill" EntityType="EmployeeService.Emp2Skill">
+          <NavigationPropertyBinding Path="employees" Target="Employees"/>
+          <NavigationPropertyBinding Path="skills" Target="Skills"/>
+          <NavigationPropertyBinding Path="SiblingEntity" Target="Emp2Skill"/>
+        </EntitySet>
+        <EntitySet Name="Employees" EntityType="EmployeeService.Employees">
+          <NavigationPropertyBinding Path="NavToSkills" Target="Emp2Skill"/>
+          <NavigationPropertyBinding Path="SiblingEntity" Target="Employees"/>
+        </EntitySet>
+        <EntitySet Name="Skills" EntityType="EmployeeService.Skills">
+          <NavigationPropertyBinding Path="NavToEmployees" Target="Emp2Skill"/>
+        </EntitySet>
+      </EntityContainer>
+      <EntityType Name="DraftAdministrativeData">
+        <Key>
+          <PropertyRef Name="DraftUUID"/>
+        </Key>
+        <Property Name="DraftUUID" Type="Edm.Guid" Nullable="false"/>
+        <Property Name="CreationDateTime" Type="Edm.DateTimeOffset" Precision="7"/>
+        <Property Name="CreatedByUser" Type="Edm.String" MaxLength="256"/>
+        <Property Name="DraftIsCreatedByMe" Type="Edm.Boolean"/>
+        <Property Name="LastChangeDateTime" Type="Edm.DateTimeOffset" Precision="7"/>
+        <Property Name="LastChangedByUser" Type="Edm.String" MaxLength="256"/>
+        <Property Name="InProcessByUser" Type="Edm.String" MaxLength="256"/>
+        <Property Name="DraftIsProcessedByMe" Type="Edm.Boolean"/>
+      </EntityType>
+      <EntityType Name="Emp2Skill">
+        <Key>
+          <PropertyRef Name="employees_Id"/>
+          <PropertyRef Name="skills_Id"/>
+          <PropertyRef Name="IsActiveEntity"/>
+        </Key>
+        <Property Name="name" Type="Edm.String"/>
+        <Property Name="experience" Type="Edm.Int32"/>
+        <Property Name="organization" Type="Edm.String"/>
+        <Property Name="age" Type="Edm.Int32"/>
+        <Property Name="designation" Type="Edm.String"/>
+        <Property Name="project" Type="Edm.String"/>
+        <NavigationProperty Name="employees" Type="EmployeeService.Employees" Partner="NavToSkills">
+          <ReferentialConstraint Property="employees_Id" ReferencedProperty="Id"/>
+        </NavigationProperty>
+        <NavigationProperty Name="skills" Type="EmployeeService.Skills" Partner="NavToEmployees">
+          <ReferentialConstraint Property="skills_Id" ReferencedProperty="Id"/>
+        </NavigationProperty>
+        <Property Name="skill" Type="Edm.String"/>
+        <Property Name="employees_Id" Type="Edm.Int32" Nullable="false"/>
+        <Property Name="skills_Id" Type="Edm.Int32" Nullable="false"/>
+        <Property Name="IsActiveEntity" Type="Edm.Boolean" Nullable="false"/>
+        <Property Name="HasActiveEntity" Type="Edm.Boolean" Nullable="false"/>
+        <Property Name="HasDraftEntity" Type="Edm.Boolean" Nullable="false"/>
+        <NavigationProperty Name="DraftAdministrativeData" Type="EmployeeService.DraftAdministrativeData" ContainsTarget="true"/>
+        <NavigationProperty Name="SiblingEntity" Type="EmployeeService.Emp2Skill"/>
+      </EntityType>
+      <EntityType Name="Employees">
+        <Key>
+          <PropertyRef Name="Id"/>
+          <PropertyRef Name="IsActiveEntity"/>
+        </Key>
+        <Property Name="name" Type="Edm.String"/>
+        <Property Name="experience" Type="Edm.Int32"/>
+        <Property Name="organization" Type="Edm.String"/>
+        <Property Name="age" Type="Edm.Int32"/>
+        <Property Name="designation" Type="Edm.String"/>
+        <Property Name="project" Type="Edm.String"/>
+        <Property Name="Id" Type="Edm.Int32" Nullable="false"/>
+        <NavigationProperty Name="NavToSkills" Type="Collection(EmployeeService.Emp2Skill)" Partner="employees">
+          <OnDelete Action="Cascade"/>
+        </NavigationProperty>
+        <Property Name="IsActiveEntity" Type="Edm.Boolean" Nullable="false"/>
+        <Property Name="HasActiveEntity" Type="Edm.Boolean" Nullable="false"/>
+        <Property Name="HasDraftEntity" Type="Edm.Boolean" Nullable="false"/>
+        <NavigationProperty Name="DraftAdministrativeData" Type="EmployeeService.DraftAdministrativeData" ContainsTarget="true"/>
+        <NavigationProperty Name="SiblingEntity" Type="EmployeeService.Employees"/>
+      </EntityType>
+      <EntityType Name="Skills">
+        <Key>
+          <PropertyRef Name="Id"/>
+        </Key>
+        <Property Name="Id" Type="Edm.Int32" Nullable="false"/>
+        <Property Name="title" Type="Edm.String"/>
+        <NavigationProperty Name="NavToEmployees" Type="Collection(EmployeeService.Emp2Skill)" Partner="skills">
+          <OnDelete Action="Cascade"/>
+        </NavigationProperty>
+      </EntityType>
+      <Action Name="draftPrepare" IsBound="true" EntitySetPath="in">
+        <Parameter Name="in" Type="EmployeeService.Emp2Skill"/>
+        <Parameter Name="SideEffectsQualifier" Type="Edm.String"/>
+        <ReturnType Type="EmployeeService.Emp2Skill"/>
+      </Action>
+      <Action Name="draftPrepare" IsBound="true" EntitySetPath="in">
+        <Parameter Name="in" Type="EmployeeService.Employees"/>
+        <Parameter Name="SideEffectsQualifier" Type="Edm.String"/>
+        <ReturnType Type="EmployeeService.Employees"/>
+      </Action>
+      <Action Name="draftActivate" IsBound="true" EntitySetPath="in">
+        <Parameter Name="in" Type="EmployeeService.Employees"/>
+        <ReturnType Type="EmployeeService.Employees"/>
+      </Action>
+      <Action Name="draftEdit" IsBound="true" EntitySetPath="in">
+        <Parameter Name="in" Type="EmployeeService.Employees"/>
+        <Parameter Name="PreserveChanges" Type="Edm.Boolean"/>
+        <ReturnType Type="EmployeeService.Employees"/>
+      </Action>
+      <Annotations Target="EmployeeService.DraftAdministrativeData/DraftUUID">
+        <Annotation Term="Common.Label" String="Draft (Technical ID)"/>
+        <Annotation Term="UI.Hidden" Bool="true"/>
+      </Annotations>
+      <Annotations Target="EmployeeService.DraftAdministrativeData/CreationDateTime">
+        <Annotation Term="Common.Label" String="Draft Created On"/>
+      </Annotations>
+      <Annotations Target="EmployeeService.DraftAdministrativeData/CreatedByUser">
+        <Annotation Term="Common.Label" String="Draft Created By"/>
+      </Annotations>
+      <Annotations Target="EmployeeService.DraftAdministrativeData/DraftIsCreatedByMe">
+        <Annotation Term="Common.Label" String="Draft Created By Me"/>
+        <Annotation Term="UI.Hidden" Bool="true"/>
+      </Annotations>
+      <Annotations Target="EmployeeService.DraftAdministrativeData/LastChangeDateTime">
+        <Annotation Term="Common.Label" String="Draft Last Changed On"/>
+      </Annotations>
+      <Annotations Target="EmployeeService.DraftAdministrativeData/LastChangedByUser">
+        <Annotation Term="Common.Label" String="Draft Last Changed By"/>
+      </Annotations>
+      <Annotations Target="EmployeeService.DraftAdministrativeData/InProcessByUser">
+        <Annotation Term="Common.Label" String="Draft In Process By"/>
+      </Annotations>
+      <Annotations Target="EmployeeService.DraftAdministrativeData/DraftIsProcessedByMe">
+        <Annotation Term="Common.Label" String="Draft In Process By Me"/>
+        <Annotation Term="UI.Hidden" Bool="true"/>
+      </Annotations>
+      <Annotations Target="EmployeeService.EntityContainer/Emp2Skill">
+        <Annotation Term="Common.DraftNode">
+          <Record Type="Common.DraftNodeType">
+            <PropertyValue Property="PreparationAction" String="EmployeeService.draftPrepare"/>
+          </Record>
+        </Annotation>
+      </Annotations>
+      <Annotations Target="EmployeeService.Emp2Skill/IsActiveEntity">
+        <Annotation Term="UI.Hidden" Bool="true"/>
+      </Annotations>
+      <Annotations Target="EmployeeService.Emp2Skill/HasActiveEntity">
+        <Annotation Term="UI.Hidden" Bool="true"/>
+      </Annotations>
+      <Annotations Target="EmployeeService.Emp2Skill/HasDraftEntity">
+        <Annotation Term="UI.Hidden" Bool="true"/>
+      </Annotations>
+      <Annotations Target="EmployeeService.Emp2Skill/DraftAdministrativeData">
+        <Annotation Term="UI.Hidden" Bool="true"/>
+      </Annotations>
+      <Annotations Target="EmployeeService.Employees">
+        <Annotation Term="UI.Facets">
+          <Collection>
+            <Record Type="UI.ReferenceFacet">
+              <PropertyValue Property="Label" String="Experience"/>
+              <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#ExpDesignation"/>
+            </Record>
+            <Record Type="UI.ReferenceFacet">
+              <PropertyValue Property="Label" String="Project"/>
+              <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#Project"/>
+            </Record>
+            <Record Type="UI.ReferenceFacet">
+              <PropertyValue Property="Label" String="All Details"/>
+              <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#OtherDetails"/>
+            </Record>
+          </Collection>
+        </Annotation>
+        <Annotation Term="UI.FieldGroup" Qualifier="ExpDesignation">
+          <Record Type="UI.FieldGroupType">
+            <PropertyValue Property="Data">
+              <Collection>
+                <Record Type="UI.DataField">
+                  <PropertyValue Property="Value" Path="experience"/>
+                </Record>
+                <Record Type="UI.DataField">
+                  <PropertyValue Property="Value" Path="designation"/>
+                </Record>
+              </Collection>
+            </PropertyValue>
+          </Record>
+        </Annotation>
+        <Annotation Term="UI.FieldGroup" Qualifier="OtherDetails">
+          <Record Type="UI.FieldGroupType">
+            <PropertyValue Property="Data">
+              <Collection>
+                <Record Type="UI.DataField">
+                  <PropertyValue Property="Value" Path="experience"/>
+                </Record>
+                <Record Type="UI.DataField">
+                  <PropertyValue Property="Value" Path="organization"/>
+                </Record>
+                <Record Type="UI.DataField">
+                  <PropertyValue Property="Value" Path="designation"/>
+                </Record>
+                <Record Type="UI.DataField">
+                  <PropertyValue Property="Value" Path="age"/>
+                </Record>
+                <Record Type="UI.DataField">
+                  <PropertyValue Property="Value" Path="project"/>
+                </Record>
+              </Collection>
+            </PropertyValue>
+          </Record>
+        </Annotation>
+        <Annotation Term="UI.FieldGroup" Qualifier="Project">
+          <Record Type="UI.FieldGroupType">
+            <PropertyValue Property="Data">
+              <Collection>
+                <Record Type="UI.DataField">
+                  <PropertyValue Property="Value" Path="organization"/>
+                </Record>
+                <Record Type="UI.DataField">
+                  <PropertyValue Property="Value" Path="project"/>
+                </Record>
+              </Collection>
+            </PropertyValue>
+          </Record>
+        </Annotation>
+        <Annotation Term="UI.HeaderFacets">
+          <Collection>
+            <Record Type="UI.ReferenceFacet">
+              <PropertyValue Property="Label" String="Experience"/>
+              <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#ExpDesignation"/>
+            </Record>
+            <Record Type="UI.ReferenceFacet">
+              <PropertyValue Property="Label" String="Project"/>
+              <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#Project"/>
+            </Record>
+          </Collection>
+        </Annotation>
+        <Annotation Term="UI.HeaderInfo">
+          <Record Type="UI.HeaderInfoType">
+            <PropertyValue Property="Title">
+              <Record Type="UI.DataField">
+                <PropertyValue Property="Value" Path="name"/>
+              </Record>
+            </PropertyValue>
+            <PropertyValue Property="TypeName" String="Employee"/>
+            <PropertyValue Property="TypeNamePlural" String="Employees"/>
+          </Record>
+        </Annotation>
+        <Annotation Term="UI.Identification">
+          <Collection>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="name"/>
+            </Record>
+          </Collection>
+        </Annotation>
+        <Annotation Term="UI.LineItem">
+          <Collection>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="Id"/>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="name"/>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="experience"/>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="organization"/>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="designation"/>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="age"/>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="project"/>
+            </Record>
+          </Collection>
+        </Annotation>
+        <Annotation Term="UI.SelectionFields">
+          <Collection>
+            <PropertyPath>name</PropertyPath>
+            <PropertyPath>organization</PropertyPath>
+            <PropertyPath>designation</PropertyPath>
+            <PropertyPath>project</PropertyPath>
+          </Collection>
+        </Annotation>
+      </Annotations>
+      <Annotations Target="EmployeeService.EntityContainer/Employees">
+        <Annotation Term="Common.DraftRoot">
+          <Record Type="Common.DraftRootType">
+            <PropertyValue Property="ActivationAction" String="EmployeeService.draftActivate"/>
+            <PropertyValue Property="EditAction" String="EmployeeService.draftEdit"/>
+            <PropertyValue Property="PreparationAction" String="EmployeeService.draftPrepare"/>
+          </Record>
+        </Annotation>
+      </Annotations>
+      <Annotations Target="EmployeeService.Employees/name">
+        <Annotation Term="Common.Label" String="Employee Name"/>
+      </Annotations>
+      <Annotations Target="EmployeeService.Employees/experience">
+        <Annotation Term="Common.Label" String="Experience"/>
+      </Annotations>
+      <Annotations Target="EmployeeService.Employees/organization">
+        <Annotation Term="Common.Label" String="Organization"/>
+      </Annotations>
+      <Annotations Target="EmployeeService.Employees/age">
+        <Annotation Term="Common.Label" String="Age"/>
+      </Annotations>
+      <Annotations Target="EmployeeService.Employees/designation">
+        <Annotation Term="Common.Label" String="Designation"/>
+      </Annotations>
+      <Annotations Target="EmployeeService.Employees/project">
+        <Annotation Term="Common.Label" String="Project"/>
+      </Annotations>
+      <Annotations Target="EmployeeService.Employees/Id">
+        <Annotation Term="Common.Label" String="ID"/>
+      </Annotations>
+      <Annotations Target="EmployeeService.Employees/IsActiveEntity">
+        <Annotation Term="UI.Hidden" Bool="true"/>
+      </Annotations>
+      <Annotations Target="EmployeeService.Employees/HasActiveEntity">
+        <Annotation Term="UI.Hidden" Bool="true"/>
+      </Annotations>
+      <Annotations Target="EmployeeService.Employees/HasDraftEntity">
+        <Annotation Term="UI.Hidden" Bool="true"/>
+      </Annotations>
+      <Annotations Target="EmployeeService.Employees/DraftAdministrativeData">
+        <Annotation Term="UI.Hidden" Bool="true"/>
+      </Annotations>
+    </Schema>
+  </edmx:DataServices>
+</edmx:Edmx>
