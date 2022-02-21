@@ -1,0 +1,49 @@
+### Employees
+GET http://localhost:4004/employee/Employees
+
+### Skills
+GET http://localhost:4004/employee/Skills
+
+### Add Employee
+POST http://localhost:4004/employee/Employees
+Content-Type: application/json
+
+{ 
+    "name" : "Prince",
+    "experience" : 6,
+    "organization" : "Deloitte USI",
+    "age" : 27,
+    "project" : "Flowserve",
+    "Id" : 203
+}
+
+### Delete Employee
+DELETE  http://localhost:4004/employee/Employees(203)
+Content-Type: application/json
+
+### Delete Skill
+DELETE  http://localhost:4004/employee/Skills(108)
+Content-Type: application/json
+
+### Add Skill
+POST http://localhost:4004/employee/Skills
+Content-Type: application/json
+
+{
+    "Id" : 107,
+    "title" : "Management"
+}
+
+### Add Employee Skill mapping . doesnt work as entity is aauto exposed
+POST http://localhost:4004/employee/Emp2Skill
+Content-Type: application/json
+
+{
+    "employees_Id" : 201,
+    "skills_Id" : 107
+}
+
+
+### Get Image
+GET http://localhost:4004/employee/SkillImages(101)/image
+Content-Type: application/octet-stream

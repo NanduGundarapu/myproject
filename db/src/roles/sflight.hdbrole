@@ -1,0 +1,12 @@
+{
+  "role": {
+    "name": "sflight",
+    "schema_analytic_privileges": [
+      {
+        "privileges": [
+          "FLIGHT_VIEW_PRIVILEGE"
+        ]
+      }
+    ]
+  }
+}
