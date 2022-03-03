@@ -5,7 +5,7 @@ using { USERDATA_USER_LOCAL } from '../db/User';
 service EmployeeService {
 
   @odata.draft.enabled
-  //@requires : 'authenticated-user'
+  @requires : 'authenticated-user'
   entity Employees as projection on my.Employees;
 
   entity Skills as projection on my.Skills;
