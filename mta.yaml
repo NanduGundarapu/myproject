@@ -1,6 +1,6 @@
 _schema-version: '3.1'
 ID: myproject
-version: 1.0.4
+version: 1.0.5
 description: A simple CAP project.
 parameters:
   enable-parallel-deployments: true
@@ -98,6 +98,9 @@ resources:
     parameters:
       service: xsuaa
       service-plan: application
+      config:
+          xsappname: 'cap-samples-uaa-${space}'
+          tenant-mode: dedicated
       path: ./xs-security.json
 
 # ------------------------------------------------------------
