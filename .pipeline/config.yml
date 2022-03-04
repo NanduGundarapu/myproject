@@ -26,16 +26,20 @@ stages:
 
   Release:
     cloudFoundryDeploy: true
-    tmsUpload: false
+    cfApiEndpoint: "https://api.cf.eu10.hana.ondemand.com"
+    cfOrg: "01c1614atrial"
+    cfSpace: "dev"
+    cfCredentialsId: "cfdeploy" # set this to 'cfdeploy'
+    cfAppName: "app"
+    tmsUpload: true
 
 steps:
+    artifactPrepareVersion:
+      versioningType: "cloud noTag"
+
     cloudFoundryDeploy:
-      cloudFoundry:
-        apiEndpoint: "https://api.cf.eu10.hana.ondemand.com"
-        org: "01c1614atrial"
-        space: "dev"
-        credentialsId: "cfdeploy" # set this to 'cfdeploy'
-        appName: "app"
-        mtaDeployParameters: "-f --version-rule ALL"
-        artifactPrepareVersion:
-        versioningType: "cloud noTag"
+      mtaDeployParameters: "-f --version-rule ALL"
+
+    tmsUpload:
+      node-name: "qa"
+      credentialsId: "tms-sk"
