@@ -62,7 +62,8 @@
         "watch": "cds watch",
         "mocha": "npx mocha || echo",
         "jest": "npx jest --verbose",
-        "test": "npm run jest -s"
+        "test": "npm run jest -s",
+        "undeploy": "cf undeploy myproject --delete-services --delete-service-keys"
     },
     "jest": {
         "testEnvironment": "node"

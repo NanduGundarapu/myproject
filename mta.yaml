@@ -1,6 +1,6 @@
 _schema-version: '3.1'
 ID: myproject
-version: 2.0.1
+version: 1.0.0
 description: A simple CAP project.
 parameters:
   enable-parallel-deployments: true
@@ -33,7 +33,6 @@ modules:
     parameters:
       disk-quota: 1024M
       memory: 512M
-      buildpack : https://github.com/cloudfoundry/nodejs-buildpack.git
     properties:
       EXIT: 1  # required by deploy.js task to terminate
     requires:
