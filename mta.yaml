@@ -3,7 +3,7 @@ ID: myproject
 version: 1.0.0
 description: A simple CAP project.
 parameters:
-  enable-parallel-deployments: false
+  enable-parallel-deployments: true
 build-parameters:
   before-all:
     - builder: custom
@@ -11,7 +11,17 @@ build-parameters:
         - npm install
         - npx cds build
 
+
 modules:
+  # - name: myproject-user-db-deployer
+  #   parameters:
+  #     buildpack: nodejs_buildpack
+  #   type: hdb
+  #   path: user_db
+  #   requires:
+  #     - name: myproject-user-db
+
+
   - name: cap-samples-app-router
     type: approuter.nodejs
     path: app
@@ -27,12 +37,14 @@ modules:
           url: "~{srv-url}"
           forwardAuthToken: true
 
+
   - name: myproject-srv
     type: nodejs
     path: srv
     parameters:
       disk-quota: 1024M
       memory: 512M
+      buildpack: nodejs_buildpack
     properties:
       EXIT: 1  # required by deploy.js task to terminate
     requires:
@@ -43,15 +55,12 @@ modules:
         properties:
           srv-url: '${default-url}'
   
-  - name: myproject-user-db-deployer
-    type: hdb
-    path: user_db
-    requires:
-      - name: myproject-user-db
 
   - name: myproject-db-deployer
     type: hdb
     path: db
+    parameters:
+      buildpack: nodejs_buildpack
     requires:
       - name: myproject-db
         properties:
@@ -61,11 +70,11 @@ modules:
         properties:
           key: ServiceName_1
           service: '~{the-service-name}'
-      - name: myproject-user-db
-        group: SERVICE_REPLACEMENTS
-        properties:
-          key: hdi-user-service
-          service: '~{user-container-name}'
+      # - name: myproject-user-db
+      #   group: SERVICE_REPLACEMENTS
+      #   properties:
+      #     key: hdi-user-service
+      #     service: '~{user-container-name}'
 
 resources:
   - name: myproject-db
@@ -76,13 +85,13 @@ resources:
     properties:
       hdi-service-name: '${service-name}'
 
-  - name: myproject-user-db
-    type: com.sap.xs.hdi-container
-    parameters:
-      service: hana
-      service-plan: hdi-shared
-    properties:
-      user-container-name: '${service-name}'
+  # - name: myproject-user-db
+  #   type: com.sap.xs.hdi-container
+  #   parameters:
+  #     service: hana
+  #     service-plan: hdi-shared
+  #   properties:
+  #     user-container-name: '${service-name}'
 
   - name: cross-container-service-1
     type: org.cloudfoundry.existing-service

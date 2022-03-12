@@ -94,6 +94,24 @@
         }
     },
     "cds": {
+        "auth": {
+            "passport": {
+                "strategy": "mock",
+                "users": {
+                    "nandu": {
+                        "roles": [
+                            "admin",
+                            "Admin"
+                        ],
+                        "ID": "nankishore@deloitte.com",
+                        "password": "secret",
+                        "userAttributes": {
+                            "country": "IND"
+                        }
+                    }
+                }
+            }
+        },
         "build": {
             "target": ".",
             "tasks": [
@@ -104,15 +122,6 @@
                         "model": [
                             "db",
                             "srv"
-                        ]
-                    }
-                },
-                {
-                    "src": "user_db",
-                    "for": "hana",
-                    "options": {
-                        "model": [
-                            "user_db"
                         ]
                     }
                 },

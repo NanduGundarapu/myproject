@@ -1,6 +1,6 @@
 using { com.my.project as my } from '../db/schema';
 using { FLIGHT  } from '../db/SFLIGHT';
-using { USERDATA_USER_LOCAL } from '../db/User';
+//using { USERDATA_USER_LOCAL } from '../db/User';
 
 service EmployeeService {
 
@@ -28,11 +28,11 @@ service FlightService{
     
 }
 
-service UserService {
+// service UserService {
 
-    entity User as projection on USERDATA_USER_LOCAL;
+//     entity User as projection on USERDATA_USER_LOCAL;
 
-}
+// }
 
 annotate EmployeeService.Employees with @(
    UI : {
