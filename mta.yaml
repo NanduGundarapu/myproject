@@ -1,7 +1,7 @@
 _schema-version: '3.1'
 ID: myproject
 version: 1.0.0
-description: My Employees CAP project.
+description: My Employees CAP project with notifications.
 parameters:
   enable-parallel-deployments: true
 build-parameters:
