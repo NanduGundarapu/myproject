@@ -10,14 +10,16 @@
     },
     "routes": [
         {
-            "source": "/status",
+            "source": "/status(.*)",
             "destination": "srv-api",
             "csrfProtection": true,
-            "authenticationType": "none",
-            "scope": {
-                "GET": "$XSAPPNAME.Display",
-                "default": "$XSAPPNAME.Display"
-            }
+            "authenticationType": "xsuaa"
+        },
+        {
+            "source": "/socket.io/(.*)",
+            "destination": "srv-api",
+            "csrfProtection": true,
+            "authenticationType": "xsuaa"
         },
         {
             "source": "/api/(.*)",
