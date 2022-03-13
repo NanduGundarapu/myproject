@@ -12,7 +12,7 @@ function swagger(app) {
                     "x-odata-version": '4.0'
                 },
             },
-            apis: ['./srv/routes/*']
+            apis: ['./routes/*']
         }
         var swaggerSpec = swaggerJSDoc(options)
         swaggerSpec.components.requestBodies = []
