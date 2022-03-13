@@ -8,7 +8,8 @@
     "websockets": {
         "enabled": true
     },
-    "routes": [{
+    "routes": [
+        {
             "source": "/status(.*)",
             "destination": "srv-api",
             "csrfProtection": true,
@@ -32,7 +33,6 @@
                 ],
                 "default": "$XSAPPNAME.Display"
             }
-
         },
         {
             "source": "/employee/(.*)",
@@ -52,7 +52,6 @@
                 ],
                 "default": "$XSAPPNAME.Display"
             }
-
         },
         {
             "source": "/rest(.*)",
@@ -72,8 +71,8 @@
                 ],
                 "default": "$XSAPPNAME.Display"
             }
-
-        }, {
+        },
+        {
             "source": "/sap/bc/lrep(.*)",
             "destination": "srv-api",
             "csrfProtection": true,
@@ -91,18 +90,11 @@
                 ],
                 "default": "$XSAPPNAME.Display"
             }
-        }, {
+        },
+        {
             "source": "^/logout.html$",
             "localDir": "./",
             "authenticationType": "none"
-        }, {
-            "source": "/(.*)",
-            "localDir": "./",
-            "authenticationType": "xsuaa",
-            "scope": {
-                "GET": "$XSAPPNAME.Display",
-                "default": "$XSAPPNAME.Display"
-            }
         },
         {
             "source": "/live",
@@ -113,7 +105,6 @@
                 "GET": "$XSAPPNAME.Display",
                 "default": "$XSAPPNAME.Display"
             }
-
         },
         {
             "source": "/ready",
@@ -124,7 +115,6 @@
                 "GET": "$XSAPPNAME.Display",
                 "default": "$XSAPPNAME.Display"
             }
-
         },
         {
             "source": "/health",
@@ -135,7 +125,6 @@
                 "GET": "$XSAPPNAME.Display",
                 "default": "$XSAPPNAME.Display"
             }
-
         },
         {
             "source": "/healthcheck",
@@ -146,8 +135,15 @@
                 "GET": "$XSAPPNAME.Display",
                 "default": "$XSAPPNAME.Display"
             }
-
+        },
+        {
+            "source": "/(.*)",
+            "localDir": "./",
+            "authenticationType": "xsuaa",
+            "scope": {
+                "GET": "$XSAPPNAME.Display",
+                "default": "$XSAPPNAME.Display"
+            }
         }
-
     ]
 }
