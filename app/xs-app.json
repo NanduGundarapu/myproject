@@ -12,8 +12,8 @@
         {
             "source": "/status",
             "destination": "srv-api",
-            "csrfProtection": true,
-            "authenticationType": "none",
+            "csrfProtection": false,
+            "authenticationType": "xsuaa",
             "scope": {
                 "GET": "$XSAPPNAME.Display",
                 "default": "$XSAPPNAME.Display"
