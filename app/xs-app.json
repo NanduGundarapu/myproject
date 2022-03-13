@@ -103,6 +103,51 @@
                 "GET": "$XSAPPNAME.Display",
                 "default": "$XSAPPNAME.Display"
             }
+        },
+        {
+            "source": "/live",
+            "destination": "srv-api",
+            "csrfProtection": false,
+            "authenticationType": "xsuaa",
+            "scope": {
+                "GET": "$XSAPPNAME.Display",
+                "default": "$XSAPPNAME.Display"
+            }
+
+        },
+        {
+            "source": "/ready",
+            "destination": "srv-api",
+            "csrfProtection": false,
+            "authenticationType": "xsuaa",
+            "scope": {
+                "GET": "$XSAPPNAME.Display",
+                "default": "$XSAPPNAME.Display"
+            }
+
+        },
+        {
+            "source": "/health",
+            "destination": "srv-api",
+            "csrfProtection": false,
+            "authenticationType": "xsuaa",
+            "scope": {
+                "GET": "$XSAPPNAME.Display",
+                "default": "$XSAPPNAME.Display"
+            }
+
+        },
+        {
+            "source": "/healthcheck",
+            "destination": "srv-api",
+            "csrfProtection": false,
+            "authenticationType": "xsuaa",
+            "scope": {
+                "GET": "$XSAPPNAME.Display",
+                "default": "$XSAPPNAME.Display"
+            }
+
         }
+
     ]
 }
