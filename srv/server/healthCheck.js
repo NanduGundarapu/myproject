@@ -31,6 +31,5 @@ module.exports = (app, options) => {
     app.use('/live', health.LivenessEndpoint(healthcheck))
     app.use('/ready', health.ReadinessEndpoint(healthcheck))
     app.use('/health', health.HealthEndpoint(healthcheck))
-    app.use('/healthcheck', health.HealthEndpoint(healthcheck))
 
 };

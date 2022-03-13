@@ -13,7 +13,11 @@
             "source": "/status(.*)",
             "destination": "srv-api",
             "csrfProtection": true,
-            "authenticationType": "xsuaa"
+            "authenticationType": "xsuaa",
+            "scope": {
+                "GET": "$XSAPPNAME.Display",
+                "default": "$XSAPPNAME.Display"
+            }
         },
         {
             "source": "/api/(.*)",
@@ -118,16 +122,6 @@
         },
         {
             "source": "/health",
-            "destination": "srv-api",
-            "csrfProtection": false,
-            "authenticationType": "xsuaa",
-            "scope": {
-                "GET": "$XSAPPNAME.Display",
-                "default": "$XSAPPNAME.Display"
-            }
-        },
-        {
-            "source": "/healthcheck",
             "destination": "srv-api",
             "csrfProtection": false,
             "authenticationType": "xsuaa",
