@@ -10,10 +10,10 @@
     },
     "routes": [
         {
-            "source": "/status(.*)",
+            "source": "/status",
             "destination": "srv-api",
             "csrfProtection": true,
-            "authenticationType": "xsuaa",
+            "authenticationType": "none",
             "scope": {
                 "GET": "$XSAPPNAME.Display",
                 "default": "$XSAPPNAME.Display"
