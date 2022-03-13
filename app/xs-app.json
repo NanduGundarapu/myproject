@@ -10,7 +10,7 @@
     },
     "routes": [
         {
-            "source": "/status(.*)",
+            "source": "/status",
             "destination": "srv-api",
             "csrfProtection": true,
             "authenticationType": "xsuaa",
