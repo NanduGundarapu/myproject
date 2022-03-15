@@ -1,1945 +1,1874 @@
 {
-    "definitions": {
-      "SFLIGHT": {
-        "kind": "entity",
-        "@cds.persistence.exists": true,
-        "elements": {
-          "MANDT": {
-            "@title": "MANDT",
-            "key": true,
-            "type": "cds.String",
-            "length": 3
-          },
-          "CARRID": {
-            "@title": "CARRID",
-            "key": true,
-            "type": "cds.String",
-            "length": 3
-          },
-          "CONNID": {
-            "@title": "CONNID",
-            "key": true,
-            "type": "cds.String",
-            "length": 4
-          },
-          "FLDATE": {
-            "@title": "FLDATE",
-            "key": true,
-            "type": "cds.String",
-            "length": 8
-          },
-          "PRICE": {
-            "@title": "PRICE",
-            "type": "cds.Decimal",
-            "precision": 15,
-            "scale": 2,
-            "notNull": true
-          },
-          "CURRENCY": {
-            "@title": "CURRENCY",
-            "type": "cds.String",
-            "length": 5,
-            "notNull": true
-          },
-          "PLANETYPE": {
-            "@title": "PLANETYPE",
-            "type": "cds.String",
-            "length": 10,
-            "notNull": true
-          },
-          "SEATSMAX": {
-            "@title": "SEATSMAX",
-            "type": "cds.Integer",
-            "notNull": true
-          },
-          "SEATSOCC": {
-            "@title": "SEATSOCC",
-            "type": "cds.Integer",
-            "notNull": true
-          },
-          "PAYMENTSUM": {
-            "@title": "PAYMENTSUM",
-            "type": "cds.Decimal",
-            "precision": 17,
-            "scale": 2,
-            "notNull": true
-          },
-          "SEATSMAX_B": {
-            "@title": "SEATSMAX_B",
-            "type": "cds.Integer",
-            "notNull": true
-          },
-          "SEATSOCC_B": {
-            "@title": "SEATSOCC_B",
-            "type": "cds.Integer",
-            "notNull": true
-          },
-          "SEATSMAX_F": {
-            "@title": "SEATSMAX_F",
-            "type": "cds.Integer",
-            "notNull": true
-          },
-          "SEATSOCC_F": {
-            "@title": "SEATSOCC_F",
-            "type": "cds.Integer",
-            "notNull": true
-          }
+  "definitions": {
+    "SFLIGHT": {
+      "kind": "entity",
+      "@cds.persistence.exists": true,
+      "elements": {
+        "MANDT": {
+          "@title": "MANDT",
+          "key": true,
+          "type": "cds.String",
+          "length": 3
+        },
+        "CARRID": {
+          "@title": "CARRID",
+          "key": true,
+          "type": "cds.String",
+          "length": 3
+        },
+        "CONNID": {
+          "@title": "CONNID",
+          "key": true,
+          "type": "cds.String",
+          "length": 4
+        },
+        "FLDATE": {
+          "@title": "FLDATE",
+          "key": true,
+          "type": "cds.String",
+          "length": 8
+        },
+        "PRICE": {
+          "@title": "PRICE",
+          "type": "cds.Decimal",
+          "precision": 15,
+          "scale": 2,
+          "notNull": true
+        },
+        "CURRENCY": {
+          "@title": "CURRENCY",
+          "type": "cds.String",
+          "length": 5,
+          "notNull": true
+        },
+        "PLANETYPE": {
+          "@title": "PLANETYPE",
+          "type": "cds.String",
+          "length": 10,
+          "notNull": true
+        },
+        "SEATSMAX": {
+          "@title": "SEATSMAX",
+          "type": "cds.Integer",
+          "notNull": true
+        },
+        "SEATSOCC": {
+          "@title": "SEATSOCC",
+          "type": "cds.Integer",
+          "notNull": true
+        },
+        "PAYMENTSUM": {
+          "@title": "PAYMENTSUM",
+          "type": "cds.Decimal",
+          "precision": 17,
+          "scale": 2,
+          "notNull": true
+        },
+        "SEATSMAX_B": {
+          "@title": "SEATSMAX_B",
+          "type": "cds.Integer",
+          "notNull": true
+        },
+        "SEATSOCC_B": {
+          "@title": "SEATSOCC_B",
+          "type": "cds.Integer",
+          "notNull": true
+        },
+        "SEATSMAX_F": {
+          "@title": "SEATSMAX_F",
+          "type": "cds.Integer",
+          "notNull": true
+        },
+        "SEATSOCC_F": {
+          "@title": "SEATSOCC_F",
+          "type": "cds.Integer",
+          "notNull": true
         }
-      },
-      "SBOOK": {
-        "kind": "entity",
-        "@cds.persistence.exists": true,
-        "elements": {
-          "MANDT": {
-            "@title": "MANDT",
-            "key": true,
-            "type": "cds.String",
-            "length": 3
-          },
-          "CARRID": {
-            "@title": "CARRID",
-            "key": true,
-            "type": "cds.String",
-            "length": 3
-          },
-          "CONNID": {
-            "@title": "CONNID",
-            "key": true,
-            "type": "cds.String",
-            "length": 4
-          },
-          "FLDATE": {
-            "@title": "FLDATE",
-            "key": true,
-            "type": "cds.String",
-            "length": 8
-          },
-          "BOOKID": {
-            "@title": "BOOKID",
-            "key": true,
-            "type": "cds.String",
-            "length": 8
-          },
-          "CUSTOMID": {
-            "@title": "CUSTOMID",
-            "type": "cds.String",
-            "length": 8,
-            "notNull": true
-          },
-          "CUSTTYPE": {
-            "@title": "CUSTTYPE",
-            "type": "cds.String",
-            "length": 1,
-            "notNull": true
-          },
-          "SMOKER": {
-            "@title": "SMOKER",
-            "type": "cds.String",
-            "length": 1,
-            "notNull": true
-          },
-          "LUGGWEIGHT": {
-            "@title": "LUGGWEIGHT",
-            "type": "cds.Decimal",
-            "precision": 8,
-            "scale": 4,
-            "notNull": true
-          },
-          "WUNIT": {
-            "@title": "WUNIT",
-            "type": "cds.String",
-            "length": 3,
-            "notNull": true
-          },
-          "INVOICE": {
-            "@title": "INVOICE",
-            "type": "cds.String",
-            "length": 1,
-            "notNull": true
-          },
-          "CLASS": {
-            "@title": "CLASS",
-            "type": "cds.String",
-            "length": 1,
-            "notNull": true
-          },
-          "FORCURAM": {
-            "@title": "FORCURAM",
-            "type": "cds.Decimal",
-            "precision": 15,
-            "scale": 2,
-            "notNull": true
-          },
-          "FORCURKEY": {
-            "@title": "FORCURKEY",
-            "type": "cds.String",
-            "length": 5,
-            "notNull": true
-          },
-          "LOCCURAM": {
-            "@title": "LOCCURAM",
-            "type": "cds.Decimal",
-            "precision": 15,
-            "scale": 2,
-            "notNull": true
-          },
-          "LOCCURKEY": {
-            "@title": "LOCCURKEY",
-            "type": "cds.String",
-            "length": 5,
-            "notNull": true
-          },
-          "ORDER_DATE": {
-            "@title": "ORDER_DATE",
-            "type": "cds.String",
-            "length": 8,
-            "notNull": true
-          },
-          "COUNTER": {
-            "@title": "COUNTER",
-            "type": "cds.String",
-            "length": 8,
-            "notNull": true
-          },
-          "AGENCYNUM": {
-            "@title": "AGENCYNUM",
-            "type": "cds.String",
-            "length": 8,
-            "notNull": true
-          },
-          "CANCELLED": {
-            "@title": "CANCELLED",
-            "type": "cds.String",
-            "length": 1,
-            "notNull": true
-          },
-          "RESERVED": {
-            "@title": "RESERVED",
-            "type": "cds.String",
-            "length": 1,
-            "notNull": true
-          },
-          "PASSNAME": {
-            "@title": "PASSNAME",
-            "type": "cds.String",
-            "length": 25,
-            "notNull": true
-          },
-          "PASSFORM": {
-            "@title": "PASSFORM",
-            "type": "cds.String",
-            "length": 15,
-            "notNull": true
-          },
-          "PASSBIRTH": {
-            "@title": "PASSBIRTH",
-            "type": "cds.String",
-            "length": 8,
-            "notNull": true
-          }
+      }
+    },
+    "SBOOK": {
+      "kind": "entity",
+      "@cds.persistence.exists": true,
+      "elements": {
+        "MANDT": {
+          "@title": "MANDT",
+          "key": true,
+          "type": "cds.String",
+          "length": 3
+        },
+        "CARRID": {
+          "@title": "CARRID",
+          "key": true,
+          "type": "cds.String",
+          "length": 3
+        },
+        "CONNID": {
+          "@title": "CONNID",
+          "key": true,
+          "type": "cds.String",
+          "length": 4
+        },
+        "FLDATE": {
+          "@title": "FLDATE",
+          "key": true,
+          "type": "cds.String",
+          "length": 8
+        },
+        "BOOKID": {
+          "@title": "BOOKID",
+          "key": true,
+          "type": "cds.String",
+          "length": 8
+        },
+        "CUSTOMID": {
+          "@title": "CUSTOMID",
+          "type": "cds.String",
+          "length": 8,
+          "notNull": true
+        },
+        "CUSTTYPE": {
+          "@title": "CUSTTYPE",
+          "type": "cds.String",
+          "length": 1,
+          "notNull": true
+        },
+        "SMOKER": {
+          "@title": "SMOKER",
+          "type": "cds.String",
+          "length": 1,
+          "notNull": true
+        },
+        "LUGGWEIGHT": {
+          "@title": "LUGGWEIGHT",
+          "type": "cds.Decimal",
+          "precision": 8,
+          "scale": 4,
+          "notNull": true
+        },
+        "WUNIT": {
+          "@title": "WUNIT",
+          "type": "cds.String",
+          "length": 3,
+          "notNull": true
+        },
+        "INVOICE": {
+          "@title": "INVOICE",
+          "type": "cds.String",
+          "length": 1,
+          "notNull": true
+        },
+        "CLASS": {
+          "@title": "CLASS",
+          "type": "cds.String",
+          "length": 1,
+          "notNull": true
+        },
+        "FORCURAM": {
+          "@title": "FORCURAM",
+          "type": "cds.Decimal",
+          "precision": 15,
+          "scale": 2,
+          "notNull": true
+        },
+        "FORCURKEY": {
+          "@title": "FORCURKEY",
+          "type": "cds.String",
+          "length": 5,
+          "notNull": true
+        },
+        "LOCCURAM": {
+          "@title": "LOCCURAM",
+          "type": "cds.Decimal",
+          "precision": 15,
+          "scale": 2,
+          "notNull": true
+        },
+        "LOCCURKEY": {
+          "@title": "LOCCURKEY",
+          "type": "cds.String",
+          "length": 5,
+          "notNull": true
+        },
+        "ORDER_DATE": {
+          "@title": "ORDER_DATE",
+          "type": "cds.String",
+          "length": 8,
+          "notNull": true
+        },
+        "COUNTER": {
+          "@title": "COUNTER",
+          "type": "cds.String",
+          "length": 8,
+          "notNull": true
+        },
+        "AGENCYNUM": {
+          "@title": "AGENCYNUM",
+          "type": "cds.String",
+          "length": 8,
+          "notNull": true
+        },
+        "CANCELLED": {
+          "@title": "CANCELLED",
+          "type": "cds.String",
+          "length": 1,
+          "notNull": true
+        },
+        "RESERVED": {
+          "@title": "RESERVED",
+          "type": "cds.String",
+          "length": 1,
+          "notNull": true
+        },
+        "PASSNAME": {
+          "@title": "PASSNAME",
+          "type": "cds.String",
+          "length": 25,
+          "notNull": true
+        },
+        "PASSFORM": {
+          "@title": "PASSFORM",
+          "type": "cds.String",
+          "length": 15,
+          "notNull": true
+        },
+        "PASSBIRTH": {
+          "@title": "PASSBIRTH",
+          "type": "cds.String",
+          "length": 8,
+          "notNull": true
         }
-      },
-      "FLIGHT": {
-        "kind": "context"
-      },
-      "FLIGHT.SflightView": {
-        "kind": "entity",
-        "query": {
-          "SELECT": {
-            "from": {
-              "ref": [
-                "SFLIGHT"
-              ],
-              "as": "FLIGHTTBL"
-            },
-            "mixin": {
-              "SBOOKLink": {
-                "type": "cds.Association",
-                "cardinality": {
-                  "max": "*"
+      }
+    },
+    "FLIGHT": {
+      "kind": "context"
+    },
+    "FLIGHT.SflightView": {
+      "kind": "entity",
+      "query": {
+        "SELECT": {
+          "from": {
+            "ref": [
+              "SFLIGHT"
+            ],
+            "as": "FLIGHTTBL"
+          },
+          "mixin": {
+            "SBOOKLink": {
+              "type": "cds.Association",
+              "cardinality": {
+                "max": "*"
+              },
+              "target": "SBOOK",
+              "on": [
+                {
+                  "ref": [
+                    "SBOOKLink",
+                    "MANDT"
+                  ]
                 },
-                "target": "SBOOK",
-                "on": [
-                  {
-                    "ref": [
-                      "SBOOKLink",
-                      "MANDT"
-                    ]
-                  },
-                  "=",
-                  {
-                    "ref": [
-                      "FLIGHTTBL",
-                      "MANDT"
-                    ]
-                  },
-                  "and",
-                  {
-                    "ref": [
-                      "SBOOKLink",
-                      "CARRID"
-                    ]
-                  },
-                  "=",
-                  {
-                    "ref": [
-                      "FLIGHTTBL",
-                      "CARRID"
-                    ]
-                  },
-                  "and",
-                  {
-                    "ref": [
-                      "SBOOKLink",
-                      "CONNID"
-                    ]
-                  },
-                  "=",
-                  {
-                    "ref": [
-                      "FLIGHTTBL",
-                      "CONNID"
-                    ]
-                  },
-                  "and",
-                  {
-                    "ref": [
-                      "SBOOKLink",
-                      "FLDATE"
-                    ]
-                  },
-                  "=",
-                  {
-                    "ref": [
-                      "FLIGHTTBL",
-                      "FLDATE"
-                    ]
-                  }
-                ]
-              }
-            },
-            "columns": [
-              {
-                "ref": [
-                  "MANDT"
-                ],
-                "as": "Client"
-              },
-              {
-                "ref": [
-                  "CARRID"
-                ],
-                "as": "CarrierId"
-              },
-              {
-                "ref": [
-                  "CONNID"
-                ],
-                "as": "ConnectionId"
-              },
-              {
-                "ref": [
-                  "FLDATE"
-                ],
-                "as": "FlightDate"
-              },
-              {
-                "ref": [
-                  "PRICE"
-                ],
-                "as": "Price"
-              },
-              {
-                "ref": [
-                  "CURRENCY"
-                ],
-                "as": "Currency"
-              },
-              {
-                "ref": [
-                  "PLANETYPE"
-                ],
-                "as": "PlaneType"
-              },
-              {
-                "ref": [
-                  "SBOOKLink",
-                  "BOOKID"
-                ],
-                "as": "BookingId"
-              },
-              {
-                "ref": [
-                  "SBOOKLink",
-                  "CUSTOMID"
-                ],
-                "as": "CustomerId"
-              },
-              {
-                "ref": [
-                  "SBOOKLink",
-                  "CUSTTYPE"
-                ],
-                "as": "CustomerType"
-              },
-              {
-                "ref": [
-                  "SBOOKLink",
-                  "PASSNAME"
-                ],
-                "as": "PassengerName"
-              }
-            ]
-          }
-        },
-        "elements": {
-          "Client": {
-            "@title": "MANDT",
-            "type": "cds.String",
-            "length": 3
-          },
-          "CarrierId": {
-            "@title": "CARRID",
-            "type": "cds.String",
-            "length": 3
-          },
-          "ConnectionId": {
-            "@title": "CONNID",
-            "type": "cds.String",
-            "length": 4
-          },
-          "FlightDate": {
-            "@title": "FLDATE",
-            "type": "cds.String",
-            "length": 8
-          },
-          "Price": {
-            "@title": "PRICE",
-            "type": "cds.Decimal",
-            "precision": 15,
-            "scale": 2,
-            "notNull": true
-          },
-          "Currency": {
-            "@title": "CURRENCY",
-            "type": "cds.String",
-            "length": 5,
-            "notNull": true
-          },
-          "PlaneType": {
-            "@title": "PLANETYPE",
-            "type": "cds.String",
-            "length": 10,
-            "notNull": true
-          },
-          "BookingId": {
-            "@title": "BOOKID",
-            "type": "cds.String",
-            "length": 8
-          },
-          "CustomerId": {
-            "@title": "CUSTOMID",
-            "type": "cds.String",
-            "length": 8
-          },
-          "CustomerType": {
-            "@title": "CUSTTYPE",
-            "type": "cds.String",
-            "length": 1
-          },
-          "PassengerName": {
-            "@title": "PASSNAME",
-            "type": "cds.String",
-            "length": 25
-          }
-        }
-      },
-      "FLIGHT.SFlightExt": {
-        "kind": "entity",
-        "@restrict": [
-          {
-            "grant": "READ",
-            "where": "001 = Client",
-            "_where": "[{\"val\":1},\"=\",{\"ref\":[\"Client\"]}]"
-          }
-        ],
-        "query": {
-          "SELECT": {
-            "from": {
-              "ref": [
-                "FLIGHT.SflightView"
+                "=",
+                {
+                  "ref": [
+                    "FLIGHTTBL",
+                    "MANDT"
+                  ]
+                },
+                "and",
+                {
+                  "ref": [
+                    "SBOOKLink",
+                    "CARRID"
+                  ]
+                },
+                "=",
+                {
+                  "ref": [
+                    "FLIGHTTBL",
+                    "CARRID"
+                  ]
+                },
+                "and",
+                {
+                  "ref": [
+                    "SBOOKLink",
+                    "CONNID"
+                  ]
+                },
+                "=",
+                {
+                  "ref": [
+                    "FLIGHTTBL",
+                    "CONNID"
+                  ]
+                },
+                "and",
+                {
+                  "ref": [
+                    "SBOOKLink",
+                    "FLDATE"
+                  ]
+                },
+                "=",
+                {
+                  "ref": [
+                    "FLIGHTTBL",
+                    "FLDATE"
+                  ]
+                }
               ]
-            },
-            "columns": [
-              {
-                "ref": [
-                  "Client"
-                ]
-              },
-              {
-                "ref": [
-                  "CarrierId"
-                ]
-              },
-              {
-                "ref": [
-                  "ConnectionId"
-                ]
-              },
-              {
-                "ref": [
-                  "FlightDate"
-                ]
-              },
-              {
-                "ref": [
-                  "Price"
-                ]
-              },
-              {
-                "ref": [
-                  "Currency"
-                ]
-              },
-              {
-                "ref": [
-                  "PlaneType"
-                ]
-              },
-              {
-                "ref": [
-                  "BookingId"
-                ]
-              },
-              {
-                "ref": [
-                  "CustomerId"
-                ]
-              },
-              {
-                "ref": [
-                  "CustomerType"
-                ]
-              },
-              {
-                "ref": [
-                  "PassengerName"
-                ]
-              }
-            ]
-          }
-        },
-        "elements": {
-          "Client": {
-            "@title": "MANDT",
-            "type": "cds.String",
-            "length": 3
-          },
-          "CarrierId": {
-            "@title": "CARRID",
-            "type": "cds.String",
-            "length": 3
-          },
-          "ConnectionId": {
-            "@title": "CONNID",
-            "type": "cds.String",
-            "length": 4
-          },
-          "FlightDate": {
-            "@title": "FLDATE",
-            "type": "cds.String",
-            "length": 8
-          },
-          "Price": {
-            "@title": "PRICE",
-            "type": "cds.Decimal",
-            "precision": 15,
-            "scale": 2,
-            "notNull": true
-          },
-          "Currency": {
-            "@title": "CURRENCY",
-            "type": "cds.String",
-            "length": 5,
-            "notNull": true
-          },
-          "PlaneType": {
-            "@title": "PLANETYPE",
-            "type": "cds.String",
-            "length": 10,
-            "notNull": true
-          },
-          "BookingId": {
-            "@title": "BOOKID",
-            "type": "cds.String",
-            "length": 8
-          },
-          "CustomerId": {
-            "@title": "CUSTOMID",
-            "type": "cds.String",
-            "length": 8
-          },
-          "CustomerType": {
-            "@title": "CUSTTYPE",
-            "type": "cds.String",
-            "length": 1
-          },
-          "PassengerName": {
-            "@title": "PASSNAME",
-            "type": "cds.String",
-            "length": 25
-          }
-        }
-      },
-      "USERDATA_USER_LOCAL": {
-        "kind": "entity",
-        "@cds.persistence.exists": true,
-        "includes": [
-          "cuid"
-        ],
-        "elements": {
-          "EMAIL": {
-            "@title": "{i18n>email}",
-            "@assert.format": "^([a-zA-Z0-9_\\-\\.]+)@([a-zA-Z0-9_\\-\\.]+)\\.([a-zA-Z]{2,5})$",
-            "type": "cds.String",
-            "length": 255
-          },
-          "FIRSTNAME": {
-            "@title": "{i18n>fname}",
-            "type": "cds.String",
-            "length": 40
-          },
-          "LASTNAME": {
-            "@title": "{i18n>lname}",
-            "type": "cds.String",
-            "length": 40
-          },
-          "ID": {
-            "@title": "{i18n>userId}",
-            "@odata.Type": "Edm.String",
-            "key": true,
-            "type": "cds.String",
-            "length": 40
-          }
-        }
-      },
-      "com.my.project.Employees": {
-        "kind": "entity",
-        "includes": [
-          "com.my.project.employeeDetails"
-        ],
-        "elements": {
-          "name": {
-            "type": "cds.String"
-          },
-          "experience": {
-            "type": "cds.Integer"
-          },
-          "organization": {
-            "type": "cds.String"
-          },
-          "age": {
-            "type": "cds.Integer"
-          },
-          "designation": {
-            "@readonly": true,
-            "type": "cds.String"
-          },
-          "project": {
-            "type": "cds.String"
-          },
-          "Id": {
-            "key": true,
-            "type": "cds.Integer"
-          },
-          "NavToSkills": {
-            "type": "cds.Composition",
-            "cardinality": {
-              "max": "*"
-            },
-            "target": "com.my.project.Emp2Skill",
-            "on": [
-              {
-                "ref": [
-                  "NavToSkills",
-                  "employees"
-                ]
-              },
-              "=",
-              {
-                "ref": [
-                  "$self"
-                ]
-              }
-            ]
-          }
-        }
-      },
-      "com.my.project.Skills": {
-        "kind": "entity",
-        "elements": {
-          "Id": {
-            "@Common.Label": "ID",
-            "key": true,
-            "type": "cds.Integer"
-          },
-          "title": {
-            "@Common.Label": "Skill",
-            "@readonly": true,
-            "type": "cds.String"
-          },
-          "image": {
-            "@cascade.all": true,
-            "type": "cds.Composition",
-            "cardinality": {
-              "max": 1
-            },
-            "target": "com.my.project.SkillImages",
-            "keys": [
-              {
-                "ref": [
-                  "skill"
-                ]
-              }
-            ]
-          },
-          "NavToEmployees": {
-            "type": "cds.Composition",
-            "cardinality": {
-              "max": "*"
-            },
-            "target": "com.my.project.Emp2Skill",
-            "on": [
-              {
-                "ref": [
-                  "NavToEmployees",
-                  "skills"
-                ]
-              },
-              "=",
-              {
-                "ref": [
-                  "$self"
-                ]
-              }
-            ]
-          }
-        }
-      },
-      "com.my.project.Emp2Skill": {
-        "kind": "entity",
-        "includes": [
-          "cuid"
-        ],
-        "elements": {
-          "ID": {
-            "key": true,
-            "type": "cds.UUID"
-          },
-          "employees": {
-            "type": "cds.Association",
-            "target": "com.my.project.Employees",
-            "keys": [
-              {
-                "ref": [
-                  "Id"
-                ]
-              }
-            ]
-          },
-          "skills": {
-            "type": "cds.Association",
-            "target": "com.my.project.Skills",
-            "keys": [
-              {
-                "ref": [
-                  "Id"
-                ]
-              }
-            ]
-          },
-          "imageUrl": {
-            "@UI.IsImageURL": true,
-            "@UI.HiddenFilter": true,
-            "type": "cds.String"
-          }
-        }
-      },
-      "com.my.project.employeeDetails": {
-        "kind": "aspect",
-        "elements": {
-          "name": {
-            "type": "cds.String"
-          },
-          "experience": {
-            "type": "cds.Integer"
-          },
-          "organization": {
-            "type": "cds.String"
-          },
-          "age": {
-            "type": "cds.Integer"
-          },
-          "designation": {
-            "@readonly": true,
-            "type": "cds.String"
-          },
-          "project": {
-            "type": "cds.String"
-          }
-        }
-      },
-      "com.my.project.SkillImages": {
-        "kind": "entity",
-        "elements": {
-          "skill": {
-            "key": true,
-            "type": "cds.Association",
-            "target": "com.my.project.Skills",
-            "keys": [
-              {
-                "ref": [
-                  "Id"
-                ]
-              }
-            ]
-          },
-          "image": {
-            "@Core.MediaType": {
-              "=": "imageType"
-            },
-            "type": "cds.LargeBinary"
-          },
-          "imageType": {
-            "@Core.IsMediaType": true,
-            "type": "cds.String"
-          }
-        }
-      },
-      "EmployeeService": {
-        "@source": "employee-service.cds",
-        "kind": "service"
-      },
-      "EmployeeService.Employees": {
-        "kind": "entity",
-        "@odata.draft.enabled": true,
-        "@UI.Identification": [
-          {
-            "Value": {
-              "=": "name"
             }
-          }
-        ],
-        "@UI.HeaderInfo.TypeName": "Employee",
-        "@UI.HeaderInfo.TypeNamePlural": "Employees",
-        "@UI.HeaderInfo.Title.Value": {
-          "=": "name"
-        },
-        "@UI.SelectionFields": [
-          {
-            "=": "Id"
-          },
-          {
-            "=": "organization"
-          },
-          {
-            "=": "designation"
-          },
-          {
-            "=": "project"
-          }
-        ],
-        "@UI.LineItem": [
-          {
-            "$Type": "UI.DataField",
-            "Value": {
-              "=": "Id"
-            }
-          },
-          {
-            "$Type": "UI.DataField",
-            "Value": {
-              "=": "name"
-            }
-          },
-          {
-            "$Type": "UI.DataField",
-            "Value": {
-              "=": "experience"
-            }
-          },
-          {
-            "$Type": "UI.DataField",
-            "Value": {
-              "=": "organization"
-            }
-          },
-          {
-            "$Type": "UI.DataField",
-            "Value": {
-              "=": "designation"
-            }
-          },
-          {
-            "$Type": "UI.DataField",
-            "Value": {
-              "=": "project"
-            }
-          }
-        ],
-        "@UI.HeaderFacets": [],
-        "@UI.Facets": [
-          {
-            "$Type": "UI.ReferenceFacet",
-            "Label": "Experience",
-            "Target": "@UI.FieldGroup#ExpDesignation"
-          },
-          {
-            "$Type": "UI.ReferenceFacet",
-            "Label": "Project",
-            "Target": "@UI.FieldGroup#Project"
-          },
-          {
-            "$Type": "UI.ReferenceFacet",
-            "Label": "All Details",
-            "Target": "@UI.FieldGroup#OtherDetails"
-          },
-          {
-            "$Type": "UI.ReferenceFacet",
-            "Label": "Skills",
-            "Target": "NavToSkills/@UI.LineItem"
-          }
-        ],
-        "@UI.FieldGroup#ExpDesignation.Data": [
-          {
-            "Value": {
-              "=": "Id"
-            }
-          },
-          {
-            "Value": {
-              "=": "name"
-            }
-          },
-          {
-            "Value": {
-              "=": "experience"
-            }
-          },
-          {
-            "Value": {
-              "=": "designation"
-            }
-          }
-        ],
-        "@UI.FieldGroup#Project.Data": [
-          {
-            "Value": {
-              "=": "organization"
-            }
-          },
-          {
-            "Value": {
-              "=": "project"
-            }
-          }
-        ],
-        "@UI.FieldGroup#OtherDetails.Data": [
-          {
-            "Value": {
-              "=": "age"
-            }
-          }
-        ],
-        "projection": {
-          "from": {
-            "ref": [
-              "com.my.project.Employees"
-            ]
-          }
-        },
-        "elements": {
-          "name": {
-            "@Common.Label": "Employee Name",
-            "type": "cds.String"
-          },
-          "experience": {
-            "@Common.Label": "Experience",
-            "type": "cds.Integer"
-          },
-          "organization": {
-            "@ValueList.entity": "OrganizationVH",
-            "@Common.Label": "Organization",
-            "type": "cds.String"
-          },
-          "age": {
-            "@Common.Label": "Age",
-            "type": "cds.Integer"
-          },
-          "designation": {
-            "@Common.Label": "Designation",
-            "@readonly": true,
-            "type": "cds.String"
-          },
-          "project": {
-            "@Common.Label": "Project",
-            "type": "cds.String"
-          },
-          "Id": {
-            "@ValueList.entity": "Employees",
-            "@Common.Label": "Employee Id",
-            "key": true,
-            "type": "cds.Integer"
-          },
-          "NavToSkills": {
-            "type": "cds.Composition",
-            "cardinality": {
-              "max": "*"
-            },
-            "target": "EmployeeService.Emp2Skill",
-            "on": [
-              {
-                "ref": [
-                  "NavToSkills",
-                  "employees"
-                ]
-              },
-              "=",
-              {
-                "ref": [
-                  "$self"
-                ]
-              }
-            ]
-          }
-        }
-      },
-      "EmployeeService.Skills": {
-        "kind": "entity",
-        "projection": {
-          "from": {
-            "ref": [
-              "com.my.project.Skills"
-            ]
-          }
-        },
-        "elements": {
-          "Id": {
-            "@Common.Label": "ID",
-            "key": true,
-            "type": "cds.Integer"
-          },
-          "title": {
-            "@Common.Label": "Skill",
-            "@readonly": true,
-            "type": "cds.String"
-          },
-          "image": {
-            "@cascade.all": true,
-            "type": "cds.Composition",
-            "cardinality": {
-              "max": 1
-            },
-            "target": "EmployeeService.SkillImages",
-            "keys": [
-              {
-                "ref": [
-                  "skill"
-                ]
-              }
-            ]
-          },
-          "NavToEmployees": {
-            "type": "cds.Composition",
-            "cardinality": {
-              "max": "*"
-            },
-            "target": "EmployeeService.Emp2Skill",
-            "on": [
-              {
-                "ref": [
-                  "NavToEmployees",
-                  "skills"
-                ]
-              },
-              "=",
-              {
-                "ref": [
-                  "$self"
-                ]
-              }
-            ]
-          }
-        }
-      },
-      "EmployeeService.Emp2Skill": {
-        "kind": "entity",
-        "@UI.LineItem": [
-          {
-            "$Type": "UI.DataField",
-            "Value": {
-              "=": "skills_Id"
-            },
-            "Label": "Skill ID"
-          },
-          {
-            "$Type": "UI.DataField",
-            "Value": {
-              "=": "skills.title"
-            },
-            "Label": "Skill"
-          },
-          {
-            "$Type": "UI.DataField",
-            "Value": {
-              "=": "imageUrl"
-            },
-            "Label": "Image"
-          }
-        ],
-        "projection": {
-          "from": {
-            "ref": [
-              "com.my.project.Emp2Skill"
-            ]
-          }
-        },
-        "elements": {
-          "ID": {
-            "key": true,
-            "type": "cds.UUID"
-          },
-          "employees": {
-            "type": "cds.Association",
-            "target": "EmployeeService.Employees",
-            "keys": [
-              {
-                "ref": [
-                  "Id"
-                ]
-              }
-            ]
-          },
-          "skills": {
-            "type": "cds.Association",
-            "target": "EmployeeService.Skills",
-            "keys": [
-              {
-                "ref": [
-                  "Id"
-                ]
-              }
-            ]
-          },
-          "imageUrl": {
-            "@UI.IsImageURL": true,
-            "@UI.HiddenFilter": true,
-            "type": "cds.String"
-          }
-        }
-      },
-      "EmployeeService.SkillImages": {
-        "kind": "entity",
-        "projection": {
-          "from": {
-            "ref": [
-              "com.my.project.SkillImages"
-            ]
           },
           "columns": [
-            "*",
             {
               "ref": [
-                "skill"
+                "MANDT"
               ],
-              "cast": {
-                "target": "EmployeeService.Skills"
-              }
+              "as": "Client"
+            },
+            {
+              "ref": [
+                "CARRID"
+              ],
+              "as": "CarrierId"
+            },
+            {
+              "ref": [
+                "CONNID"
+              ],
+              "as": "ConnectionId"
+            },
+            {
+              "ref": [
+                "FLDATE"
+              ],
+              "as": "FlightDate"
+            },
+            {
+              "ref": [
+                "PRICE"
+              ],
+              "as": "Price"
+            },
+            {
+              "ref": [
+                "CURRENCY"
+              ],
+              "as": "Currency"
+            },
+            {
+              "ref": [
+                "PLANETYPE"
+              ],
+              "as": "PlaneType"
+            },
+            {
+              "ref": [
+                "SBOOKLink",
+                "BOOKID"
+              ],
+              "as": "BookingId"
+            },
+            {
+              "ref": [
+                "SBOOKLink",
+                "CUSTOMID"
+              ],
+              "as": "CustomerId"
+            },
+            {
+              "ref": [
+                "SBOOKLink",
+                "CUSTTYPE"
+              ],
+              "as": "CustomerType"
+            },
+            {
+              "ref": [
+                "SBOOKLink",
+                "PASSNAME"
+              ],
+              "as": "PassengerName"
             }
           ]
+        }
+      },
+      "elements": {
+        "Client": {
+          "@title": "MANDT",
+          "type": "cds.String",
+          "length": 3
         },
-        "elements": {
-          "skill": {
-            "key": true,
-            "type": "cds.Association",
-            "target": "EmployeeService.Skills",
-            "keys": [
-              {
-                "ref": [
-                  "Id"
-                ]
-              }
-            ]
-          },
-          "image": {
-            "@Core.MediaType": {
-              "=": "imageType"
-            },
-            "type": "cds.LargeBinary"
-          },
-          "imageType": {
-            "@Core.IsMediaType": true,
-            "type": "cds.String"
-          }
+        "CarrierId": {
+          "@title": "CARRID",
+          "type": "cds.String",
+          "length": 3
+        },
+        "ConnectionId": {
+          "@title": "CONNID",
+          "type": "cds.String",
+          "length": 4
+        },
+        "FlightDate": {
+          "@title": "FLDATE",
+          "type": "cds.String",
+          "length": 8
+        },
+        "Price": {
+          "@title": "PRICE",
+          "type": "cds.Decimal",
+          "precision": 15,
+          "scale": 2,
+          "notNull": true
+        },
+        "Currency": {
+          "@title": "CURRENCY",
+          "type": "cds.String",
+          "length": 5,
+          "notNull": true
+        },
+        "PlaneType": {
+          "@title": "PLANETYPE",
+          "type": "cds.String",
+          "length": 10,
+          "notNull": true
+        },
+        "BookingId": {
+          "@title": "BOOKID",
+          "type": "cds.String",
+          "length": 8
+        },
+        "CustomerId": {
+          "@title": "CUSTOMID",
+          "type": "cds.String",
+          "length": 8
+        },
+        "CustomerType": {
+          "@title": "CUSTTYPE",
+          "type": "cds.String",
+          "length": 1
+        },
+        "PassengerName": {
+          "@title": "PASSNAME",
+          "type": "cds.String",
+          "length": 25
         }
-      },
-      "EmployeeService.loadSkillImages": {
-        "kind": "function",
-        "returns": {
-          "type": "cds.Boolean"
+      }
+    },
+    "FLIGHT.SFlightExt": {
+      "kind": "entity",
+      "@restrict": [
+        {
+          "grant": "READ",
+          "where": "001 = Client",
+          "_where": "[{\"val\":1},\"=\",{\"ref\":[\"Client\"]}]"
         }
-      },
-      "FlightService": {
-        "@source": "employee-service.cds",
-        "kind": "service"
-      },
-      "FlightService.SFlight": {
-        "kind": "entity",
-        "projection": {
+      ],
+      "query": {
+        "SELECT": {
           "from": {
             "ref": [
               "FLIGHT.SflightView"
             ]
-          }
+          },
+          "columns": [
+            {
+              "ref": [
+                "Client"
+              ]
+            },
+            {
+              "ref": [
+                "CarrierId"
+              ]
+            },
+            {
+              "ref": [
+                "ConnectionId"
+              ]
+            },
+            {
+              "ref": [
+                "FlightDate"
+              ]
+            },
+            {
+              "ref": [
+                "Price"
+              ]
+            },
+            {
+              "ref": [
+                "Currency"
+              ]
+            },
+            {
+              "ref": [
+                "PlaneType"
+              ]
+            },
+            {
+              "ref": [
+                "BookingId"
+              ]
+            },
+            {
+              "ref": [
+                "CustomerId"
+              ]
+            },
+            {
+              "ref": [
+                "CustomerType"
+              ]
+            },
+            {
+              "ref": [
+                "PassengerName"
+              ]
+            }
+          ]
+        }
+      },
+      "elements": {
+        "Client": {
+          "@title": "MANDT",
+          "type": "cds.String",
+          "length": 3
         },
-        "elements": {
-          "Client": {
-            "@title": "MANDT",
-            "type": "cds.String",
-            "length": 3
-          },
-          "CarrierId": {
-            "@title": "CARRID",
-            "type": "cds.String",
-            "length": 3
-          },
-          "ConnectionId": {
-            "@title": "CONNID",
-            "type": "cds.String",
-            "length": 4
-          },
-          "FlightDate": {
-            "@title": "FLDATE",
-            "type": "cds.String",
-            "length": 8
-          },
-          "Price": {
-            "@title": "PRICE",
-            "type": "cds.Decimal",
-            "precision": 15,
-            "scale": 2,
-            "notNull": true
-          },
-          "Currency": {
-            "@title": "CURRENCY",
-            "type": "cds.String",
-            "length": 5,
-            "notNull": true
-          },
-          "PlaneType": {
-            "@title": "PLANETYPE",
-            "type": "cds.String",
-            "length": 10,
-            "notNull": true
-          },
-          "BookingId": {
-            "@title": "BOOKID",
-            "type": "cds.String",
-            "length": 8
-          },
-          "CustomerId": {
-            "@title": "CUSTOMID",
-            "type": "cds.String",
-            "length": 8
-          },
-          "CustomerType": {
-            "@title": "CUSTTYPE",
-            "type": "cds.String",
-            "length": 1
-          },
-          "PassengerName": {
-            "@title": "PASSNAME",
-            "type": "cds.String",
-            "length": 25
-          }
-        }
-      },
-      "FlightService.SFlightExt": {
-        "kind": "entity",
-        "@restrict": [
-          {
-            "grant": "READ",
-            "where": "001 = Client",
-            "_where": "[{\"val\":1},\"=\",{\"ref\":[\"Client\"]}]"
-          }
-        ],
-        "projection": {
-          "from": {
-            "ref": [
-              "FLIGHT.SFlightExt"
-            ]
-          }
+        "CarrierId": {
+          "@title": "CARRID",
+          "type": "cds.String",
+          "length": 3
         },
-        "elements": {
-          "Client": {
-            "@title": "MANDT",
-            "type": "cds.String",
-            "length": 3
-          },
-          "CarrierId": {
-            "@title": "CARRID",
-            "type": "cds.String",
-            "length": 3
-          },
-          "ConnectionId": {
-            "@title": "CONNID",
-            "type": "cds.String",
-            "length": 4
-          },
-          "FlightDate": {
-            "@title": "FLDATE",
-            "type": "cds.String",
-            "length": 8
-          },
-          "Price": {
-            "@title": "PRICE",
-            "type": "cds.Decimal",
-            "precision": 15,
-            "scale": 2,
-            "notNull": true
-          },
-          "Currency": {
-            "@title": "CURRENCY",
-            "type": "cds.String",
-            "length": 5,
-            "notNull": true
-          },
-          "PlaneType": {
-            "@title": "PLANETYPE",
-            "type": "cds.String",
-            "length": 10,
-            "notNull": true
-          },
-          "BookingId": {
-            "@title": "BOOKID",
-            "type": "cds.String",
-            "length": 8
-          },
-          "CustomerId": {
-            "@title": "CUSTOMID",
-            "type": "cds.String",
-            "length": 8
-          },
-          "CustomerType": {
-            "@title": "CUSTTYPE",
-            "type": "cds.String",
-            "length": 1
-          },
-          "PassengerName": {
-            "@title": "PASSNAME",
-            "type": "cds.String",
-            "length": 25
-          }
-        }
-      },
-      "UserService": {
-        "@source": "employee-service.cds",
-        "kind": "service"
-      },
-      "UserService.User": {
-        "kind": "entity",
-        "projection": {
-          "from": {
-            "ref": [
-              "USERDATA_USER_LOCAL"
-            ]
-          }
+        "ConnectionId": {
+          "@title": "CONNID",
+          "type": "cds.String",
+          "length": 4
         },
-        "elements": {
-          "EMAIL": {
-            "@title": "{i18n>email}",
-            "@assert.format": "^([a-zA-Z0-9_\\-\\.]+)@([a-zA-Z0-9_\\-\\.]+)\\.([a-zA-Z]{2,5})$",
-            "type": "cds.String",
-            "length": 255
-          },
-          "FIRSTNAME": {
-            "@title": "{i18n>fname}",
-            "type": "cds.String",
-            "length": 40
-          },
-          "LASTNAME": {
-            "@title": "{i18n>lname}",
-            "type": "cds.String",
-            "length": 40
-          },
-          "ID": {
-            "@title": "{i18n>userId}",
-            "@odata.Type": "Edm.String",
-            "key": true,
-            "type": "cds.String",
-            "length": 40
-          }
-        }
-      },
-      "Language": {
-        "kind": "type",
-        "@title": "{i18n>Language}",
-        "@description": "{i18n>LanguageCode.Description}",
-        "type": "cds.Association",
-        "target": "sap.common.Languages",
-        "keys": [
-          {
-            "ref": [
-              "code"
-            ]
-          }
-        ]
-      },
-      "Currency": {
-        "kind": "type",
-        "@title": "{i18n>Currency}",
-        "@description": "{i18n>CurrencyCode.Description}",
-        "type": "cds.Association",
-        "target": "sap.common.Currencies",
-        "keys": [
-          {
-            "ref": [
-              "code"
-            ]
-          }
-        ]
-      },
-      "Country": {
-        "kind": "type",
-        "@title": "{i18n>Country}",
-        "@description": "{i18n>CountryCode.Description}",
-        "type": "cds.Association",
-        "target": "sap.common.Countries",
-        "keys": [
-          {
-            "ref": [
-              "code"
-            ]
-          }
-        ]
-      },
-      "sap.common": {
-        "kind": "context"
-      },
-      "sap.common.Languages": {
-        "kind": "entity",
-        "@cds.autoexpose": true,
-        "@cds.persistence.skip": "if-unused",
-        "@UI.Identification": [
-          {
-            "Value": {
-              "=": "name"
-            }
-          }
-        ],
-        "@cds.odata.valuelist": true,
-        "includes": [
-          "sap.common.CodeList"
-        ],
-        "elements": {
-          "name": {
-            "@title": "{i18n>Name}",
-            "localized": true,
-            "type": "cds.String",
-            "length": 255
-          },
-          "descr": {
-            "@title": "{i18n>Description}",
-            "localized": true,
-            "type": "cds.String",
-            "length": 1000
-          },
-          "code": {
-            "@title": "{i18n>LanguageCode}",
-            "@Common.Text": {
-              "=": "name"
-            },
-            "key": true,
-            "type": "cds.String",
-            "length": 14
-          },
-          "texts": {
-            "type": "cds.Composition",
-            "cardinality": {
-              "max": "*"
-            },
-            "target": "sap.common.Languages.texts",
-            "on": [
-              {
-                "ref": [
-                  "texts",
-                  "code"
-                ]
-              },
-              "=",
-              {
-                "ref": [
-                  "code"
-                ]
-              }
-            ]
-          },
-          "localized": {
-            "type": "cds.Association",
-            "target": "sap.common.Languages.texts",
-            "on": [
-              {
-                "ref": [
-                  "localized",
-                  "code"
-                ]
-              },
-              "=",
-              {
-                "ref": [
-                  "code"
-                ]
-              },
-              "and",
-              {
-                "ref": [
-                  "localized",
-                  "locale"
-                ]
-              },
-              "=",
-              {
-                "ref": [
-                  "$user",
-                  "locale"
-                ]
-              }
-            ]
-          }
-        }
-      },
-      "sap.common.Countries": {
-        "kind": "entity",
-        "@cds.autoexpose": true,
-        "@cds.persistence.skip": "if-unused",
-        "@UI.Identification": [
-          {
-            "Value": {
-              "=": "name"
-            }
-          }
-        ],
-        "@cds.odata.valuelist": true,
-        "includes": [
-          "sap.common.CodeList"
-        ],
-        "elements": {
-          "name": {
-            "@title": "{i18n>Name}",
-            "localized": true,
-            "type": "cds.String",
-            "length": 255
-          },
-          "descr": {
-            "@title": "{i18n>Description}",
-            "localized": true,
-            "type": "cds.String",
-            "length": 1000
-          },
-          "code": {
-            "@title": "{i18n>CountryCode}",
-            "@Common.Text": {
-              "=": "name"
-            },
-            "key": true,
-            "type": "cds.String",
-            "length": 3
-          },
-          "texts": {
-            "type": "cds.Composition",
-            "cardinality": {
-              "max": "*"
-            },
-            "target": "sap.common.Countries.texts",
-            "on": [
-              {
-                "ref": [
-                  "texts",
-                  "code"
-                ]
-              },
-              "=",
-              {
-                "ref": [
-                  "code"
-                ]
-              }
-            ]
-          },
-          "localized": {
-            "type": "cds.Association",
-            "target": "sap.common.Countries.texts",
-            "on": [
-              {
-                "ref": [
-                  "localized",
-                  "code"
-                ]
-              },
-              "=",
-              {
-                "ref": [
-                  "code"
-                ]
-              },
-              "and",
-              {
-                "ref": [
-                  "localized",
-                  "locale"
-                ]
-              },
-              "=",
-              {
-                "ref": [
-                  "$user",
-                  "locale"
-                ]
-              }
-            ]
-          }
-        }
-      },
-      "sap.common.Currencies": {
-        "kind": "entity",
-        "@cds.autoexpose": true,
-        "@cds.persistence.skip": "if-unused",
-        "@UI.Identification": [
-          {
-            "Value": {
-              "=": "name"
-            }
-          }
-        ],
-        "@cds.odata.valuelist": true,
-        "includes": [
-          "sap.common.CodeList"
-        ],
-        "elements": {
-          "name": {
-            "@title": "{i18n>Name}",
-            "localized": true,
-            "type": "cds.String",
-            "length": 255
-          },
-          "descr": {
-            "@title": "{i18n>Description}",
-            "localized": true,
-            "type": "cds.String",
-            "length": 1000
-          },
-          "code": {
-            "@title": "{i18n>CurrencyCode}",
-            "@Common.Text": {
-              "=": "name"
-            },
-            "key": true,
-            "type": "cds.String",
-            "length": 3
-          },
-          "symbol": {
-            "@title": "{i18n>CurrencySymbol}",
-            "type": "cds.String",
-            "length": 5
-          },
-          "texts": {
-            "type": "cds.Composition",
-            "cardinality": {
-              "max": "*"
-            },
-            "target": "sap.common.Currencies.texts",
-            "on": [
-              {
-                "ref": [
-                  "texts",
-                  "code"
-                ]
-              },
-              "=",
-              {
-                "ref": [
-                  "code"
-                ]
-              }
-            ]
-          },
-          "localized": {
-            "type": "cds.Association",
-            "target": "sap.common.Currencies.texts",
-            "on": [
-              {
-                "ref": [
-                  "localized",
-                  "code"
-                ]
-              },
-              "=",
-              {
-                "ref": [
-                  "code"
-                ]
-              },
-              "and",
-              {
-                "ref": [
-                  "localized",
-                  "locale"
-                ]
-              },
-              "=",
-              {
-                "ref": [
-                  "$user",
-                  "locale"
-                ]
-              }
-            ]
-          }
-        }
-      },
-      "sap.common.CodeList": {
-        "kind": "aspect",
-        "@cds.autoexpose": true,
-        "@cds.persistence.skip": "if-unused",
-        "@UI.Identification": [
-          {
-            "Value": {
-              "=": "name"
-            }
-          }
-        ],
-        "@cds.odata.valuelist": true,
-        "elements": {
-          "name": {
-            "@title": "{i18n>Name}",
-            "localized": true,
-            "type": "cds.String",
-            "length": 255
-          },
-          "descr": {
-            "@title": "{i18n>Description}",
-            "localized": true,
-            "type": "cds.String",
-            "length": 1000
-          }
-        }
-      },
-      "cuid": {
-        "kind": "aspect",
-        "elements": {
-          "ID": {
-            "key": true,
-            "type": "cds.UUID"
-          }
-        }
-      },
-      "managed": {
-        "kind": "aspect",
-        "elements": {
-          "createdAt": {
-            "@cds.on.insert": {
-              "=": "$now"
-            },
-            "@UI.HiddenFilter": true,
-            "@Core.Immutable": true,
-            "@title": "{i18n>CreatedAt}",
-            "@readonly": true,
-            "@odata.on.insert": {
-              "#": "now"
-            },
-            "type": "cds.Timestamp"
-          },
-          "createdBy": {
-            "@cds.on.insert": {
-              "=": "$user"
-            },
-            "@UI.HiddenFilter": true,
-            "@Core.Immutable": true,
-            "@title": "{i18n>CreatedBy}",
-            "@readonly": true,
-            "@odata.on.insert": {
-              "#": "user"
-            },
-            "@description": "{i18n>UserID.Description}",
-            "type": "User",
-            "length": 255
-          },
-          "modifiedAt": {
-            "@cds.on.insert": {
-              "=": "$now"
-            },
-            "@cds.on.update": {
-              "=": "$now"
-            },
-            "@UI.HiddenFilter": true,
-            "@title": "{i18n>ChangedAt}",
-            "@readonly": true,
-            "@odata.on.update": {
-              "#": "now"
-            },
-            "type": "cds.Timestamp"
-          },
-          "modifiedBy": {
-            "@cds.on.insert": {
-              "=": "$user"
-            },
-            "@cds.on.update": {
-              "=": "$user"
-            },
-            "@UI.HiddenFilter": true,
-            "@title": "{i18n>ChangedBy}",
-            "@readonly": true,
-            "@odata.on.update": {
-              "#": "user"
-            },
-            "@description": "{i18n>UserID.Description}",
-            "type": "User",
-            "length": 255
-          }
-        }
-      },
-      "temporal": {
-        "kind": "aspect",
-        "elements": {
-          "validFrom": {
-            "@cds.valid.from": true,
-            "type": "cds.Timestamp"
-          },
-          "validTo": {
-            "@cds.valid.to": true,
-            "type": "cds.Timestamp"
-          }
-        }
-      },
-      "User": {
-        "kind": "type",
-        "@title": "{i18n>UserID}",
-        "@description": "{i18n>UserID.Description}",
-        "type": "cds.String",
-        "length": 255
-      },
-      "extensible": {
-        "kind": "aspect",
-        "elements": {
-          "extensions__": {
-            "@cds.api.ignore": true,
-            "type": "cds.String"
-          }
-        }
-      },
-      "sap.common.Languages.texts": {
-        "kind": "entity",
-        "@odata.draft.enabled": false,
-        "elements": {
-          "locale": {
-            "key": true,
-            "type": "cds.String",
-            "length": 14
-          },
-          "name": {
-            "@title": "{i18n>Name}",
-            "localized": null,
-            "type": "cds.String",
-            "length": 255
-          },
-          "descr": {
-            "@title": "{i18n>Description}",
-            "localized": null,
-            "type": "cds.String",
-            "length": 1000
-          },
-          "code": {
-            "@odata.containment.ignore": true,
-            "@title": "{i18n>LanguageCode}",
-            "@Common.Text": {
-              "=": "name"
-            },
-            "key": true,
-            "type": "cds.String",
-            "length": 14
-          }
-        }
-      },
-      "sap.common.Countries.texts": {
-        "kind": "entity",
-        "@odata.draft.enabled": false,
-        "elements": {
-          "locale": {
-            "key": true,
-            "type": "cds.String",
-            "length": 14
-          },
-          "name": {
-            "@title": "{i18n>Name}",
-            "localized": null,
-            "type": "cds.String",
-            "length": 255
-          },
-          "descr": {
-            "@title": "{i18n>Description}",
-            "localized": null,
-            "type": "cds.String",
-            "length": 1000
-          },
-          "code": {
-            "@odata.containment.ignore": true,
-            "@title": "{i18n>CountryCode}",
-            "@Common.Text": {
-              "=": "name"
-            },
-            "key": true,
-            "type": "cds.String",
-            "length": 3
-          }
-        }
-      },
-      "sap.common.Currencies.texts": {
-        "kind": "entity",
-        "@odata.draft.enabled": false,
-        "elements": {
-          "locale": {
-            "key": true,
-            "type": "cds.String",
-            "length": 14
-          },
-          "name": {
-            "@title": "{i18n>Name}",
-            "localized": null,
-            "type": "cds.String",
-            "length": 255
-          },
-          "descr": {
-            "@title": "{i18n>Description}",
-            "localized": null,
-            "type": "cds.String",
-            "length": 1000
-          },
-          "code": {
-            "@odata.containment.ignore": true,
-            "@title": "{i18n>CurrencyCode}",
-            "@Common.Text": {
-              "=": "name"
-            },
-            "key": true,
-            "type": "cds.String",
-            "length": 3
-          }
+        "FlightDate": {
+          "@title": "FLDATE",
+          "type": "cds.String",
+          "length": 8
+        },
+        "Price": {
+          "@title": "PRICE",
+          "type": "cds.Decimal",
+          "precision": 15,
+          "scale": 2,
+          "notNull": true
+        },
+        "Currency": {
+          "@title": "CURRENCY",
+          "type": "cds.String",
+          "length": 5,
+          "notNull": true
+        },
+        "PlaneType": {
+          "@title": "PLANETYPE",
+          "type": "cds.String",
+          "length": 10,
+          "notNull": true
+        },
+        "BookingId": {
+          "@title": "BOOKID",
+          "type": "cds.String",
+          "length": 8
+        },
+        "CustomerId": {
+          "@title": "CUSTOMID",
+          "type": "cds.String",
+          "length": 8
+        },
+        "CustomerType": {
+          "@title": "CUSTTYPE",
+          "type": "cds.String",
+          "length": 1
+        },
+        "PassengerName": {
+          "@title": "PASSNAME",
+          "type": "cds.String",
+          "length": 25
         }
       }
     },
-    "meta": {
-      "creator": "CDS Compiler v2.12.0",
-      "flavor": "inferred"
+    "com.my.project.Employees": {
+      "kind": "entity",
+      "includes": [
+        "com.my.project.employeeDetails"
+      ],
+      "elements": {
+        "name": {
+          "type": "cds.String"
+        },
+        "experience": {
+          "type": "cds.Integer"
+        },
+        "organization": {
+          "type": "cds.String"
+        },
+        "age": {
+          "type": "cds.Integer"
+        },
+        "designation": {
+          "@readonly": true,
+          "type": "cds.String"
+        },
+        "project": {
+          "type": "cds.String"
+        },
+        "Id": {
+          "key": true,
+          "type": "cds.Integer"
+        },
+        "NavToSkills": {
+          "type": "cds.Composition",
+          "cardinality": {
+            "max": "*"
+          },
+          "target": "com.my.project.Emp2Skill",
+          "on": [
+            {
+              "ref": [
+                "NavToSkills",
+                "employees"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "$self"
+              ]
+            }
+          ]
+        }
+      }
     },
-    "$version": "2.0"
-  }
+    "com.my.project.Skills": {
+      "kind": "entity",
+      "elements": {
+        "Id": {
+          "@Common.Label": "ID",
+          "key": true,
+          "type": "cds.Integer"
+        },
+        "title": {
+          "@Common.Label": "Skill",
+          "@readonly": true,
+          "type": "cds.String"
+        },
+        "image": {
+          "@cascade.all": true,
+          "type": "cds.Composition",
+          "cardinality": {
+            "max": 1
+          },
+          "target": "com.my.project.SkillImages",
+          "keys": [
+            {
+              "ref": [
+                "skill"
+              ]
+            }
+          ]
+        },
+        "NavToEmployees": {
+          "type": "cds.Composition",
+          "cardinality": {
+            "max": "*"
+          },
+          "target": "com.my.project.Emp2Skill",
+          "on": [
+            {
+              "ref": [
+                "NavToEmployees",
+                "skills"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "$self"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "com.my.project.Emp2Skill": {
+      "kind": "entity",
+      "includes": [
+        "cuid"
+      ],
+      "elements": {
+        "ID": {
+          "key": true,
+          "type": "cds.UUID"
+        },
+        "employees": {
+          "type": "cds.Association",
+          "target": "com.my.project.Employees",
+          "keys": [
+            {
+              "ref": [
+                "Id"
+              ]
+            }
+          ]
+        },
+        "skills": {
+          "type": "cds.Association",
+          "target": "com.my.project.Skills",
+          "keys": [
+            {
+              "ref": [
+                "Id"
+              ]
+            }
+          ]
+        },
+        "imageUrl": {
+          "@UI.IsImageURL": true,
+          "@UI.HiddenFilter": true,
+          "type": "cds.String"
+        }
+      }
+    },
+    "com.my.project.employeeDetails": {
+      "kind": "aspect",
+      "elements": {
+        "name": {
+          "type": "cds.String"
+        },
+        "experience": {
+          "type": "cds.Integer"
+        },
+        "organization": {
+          "type": "cds.String"
+        },
+        "age": {
+          "type": "cds.Integer"
+        },
+        "designation": {
+          "@readonly": true,
+          "type": "cds.String"
+        },
+        "project": {
+          "type": "cds.String"
+        }
+      }
+    },
+    "com.my.project.SkillImages": {
+      "kind": "entity",
+      "elements": {
+        "skill": {
+          "key": true,
+          "type": "cds.Association",
+          "target": "com.my.project.Skills",
+          "keys": [
+            {
+              "ref": [
+                "Id"
+              ]
+            }
+          ]
+        },
+        "image": {
+          "@Core.MediaType": {
+            "=": "imageType"
+          },
+          "type": "cds.LargeBinary"
+        },
+        "imageType": {
+          "@Core.IsMediaType": true,
+          "type": "cds.String"
+        }
+      }
+    },
+    "EmployeeService": {
+      "@source": "employee-service.cds",
+      "kind": "service"
+    },
+    "EmployeeService.Employees": {
+      "kind": "entity",
+      "@odata.draft.enabled": true,
+      "@UI.Identification": [
+        {
+          "Value": {
+            "=": "name"
+          }
+        }
+      ],
+      "@UI.HeaderInfo.TypeName": "Employee",
+      "@UI.HeaderInfo.TypeNamePlural": "Employees",
+      "@UI.HeaderInfo.Title.Value": {
+        "=": "name"
+      },
+      "@UI.SelectionFields": [
+        {
+          "=": "Id"
+        },
+        {
+          "=": "organization"
+        },
+        {
+          "=": "designation"
+        },
+        {
+          "=": "project"
+        }
+      ],
+      "@UI.LineItem": [
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "Id"
+          }
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "name"
+          }
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "experience"
+          }
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "organization"
+          }
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "designation"
+          }
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "project"
+          }
+        }
+      ],
+      "@UI.HeaderFacets": [],
+      "@UI.Facets": [
+        {
+          "$Type": "UI.ReferenceFacet",
+          "Label": "Experience",
+          "Target": "@UI.FieldGroup#ExpDesignation"
+        },
+        {
+          "$Type": "UI.ReferenceFacet",
+          "Label": "Project",
+          "Target": "@UI.FieldGroup#Project"
+        },
+        {
+          "$Type": "UI.ReferenceFacet",
+          "Label": "All Details",
+          "Target": "@UI.FieldGroup#OtherDetails"
+        },
+        {
+          "$Type": "UI.ReferenceFacet",
+          "Label": "Skills",
+          "Target": "NavToSkills/@UI.LineItem"
+        }
+      ],
+      "@UI.FieldGroup#ExpDesignation.Data": [
+        {
+          "Value": {
+            "=": "Id"
+          }
+        },
+        {
+          "Value": {
+            "=": "name"
+          }
+        },
+        {
+          "Value": {
+            "=": "experience"
+          }
+        },
+        {
+          "Value": {
+            "=": "designation"
+          }
+        }
+      ],
+      "@UI.FieldGroup#Project.Data": [
+        {
+          "Value": {
+            "=": "organization"
+          }
+        },
+        {
+          "Value": {
+            "=": "project"
+          }
+        }
+      ],
+      "@UI.FieldGroup#OtherDetails.Data": [
+        {
+          "Value": {
+            "=": "age"
+          }
+        }
+      ],
+      "projection": {
+        "from": {
+          "ref": [
+            "com.my.project.Employees"
+          ]
+        }
+      },
+      "elements": {
+        "name": {
+          "@Common.Label": "Employee Name",
+          "type": "cds.String"
+        },
+        "experience": {
+          "@Common.Label": "Experience",
+          "type": "cds.Integer"
+        },
+        "organization": {
+          "@ValueList.entity": "OrganizationVH",
+          "@Common.Label": "Organization",
+          "type": "cds.String"
+        },
+        "age": {
+          "@Common.Label": "Age",
+          "type": "cds.Integer"
+        },
+        "designation": {
+          "@Common.Label": "Designation",
+          "@readonly": true,
+          "type": "cds.String"
+        },
+        "project": {
+          "@Common.Label": "Project",
+          "type": "cds.String"
+        },
+        "Id": {
+          "@ValueList.entity": "Employees",
+          "@Common.Label": "Employee Id",
+          "key": true,
+          "type": "cds.Integer"
+        },
+        "NavToSkills": {
+          "type": "cds.Composition",
+          "cardinality": {
+            "max": "*"
+          },
+          "target": "EmployeeService.Emp2Skill",
+          "on": [
+            {
+              "ref": [
+                "NavToSkills",
+                "employees"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "$self"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "EmployeeService.Skills": {
+      "kind": "entity",
+      "projection": {
+        "from": {
+          "ref": [
+            "com.my.project.Skills"
+          ]
+        }
+      },
+      "elements": {
+        "Id": {
+          "@Common.Label": "ID",
+          "key": true,
+          "type": "cds.Integer"
+        },
+        "title": {
+          "@Common.Label": "Skill",
+          "@readonly": true,
+          "type": "cds.String"
+        },
+        "image": {
+          "@cascade.all": true,
+          "type": "cds.Composition",
+          "cardinality": {
+            "max": 1
+          },
+          "target": "EmployeeService.SkillImages",
+          "keys": [
+            {
+              "ref": [
+                "skill"
+              ]
+            }
+          ]
+        },
+        "NavToEmployees": {
+          "type": "cds.Composition",
+          "cardinality": {
+            "max": "*"
+          },
+          "target": "EmployeeService.Emp2Skill",
+          "on": [
+            {
+              "ref": [
+                "NavToEmployees",
+                "skills"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "$self"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "EmployeeService.Emp2Skill": {
+      "kind": "entity",
+      "@UI.LineItem": [
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "skills_Id"
+          },
+          "Label": "Skill ID"
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "skills.title"
+          },
+          "Label": "Skill"
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "imageUrl"
+          },
+          "Label": "Image"
+        }
+      ],
+      "projection": {
+        "from": {
+          "ref": [
+            "com.my.project.Emp2Skill"
+          ]
+        }
+      },
+      "elements": {
+        "ID": {
+          "key": true,
+          "type": "cds.UUID"
+        },
+        "employees": {
+          "type": "cds.Association",
+          "target": "EmployeeService.Employees",
+          "keys": [
+            {
+              "ref": [
+                "Id"
+              ]
+            }
+          ]
+        },
+        "skills": {
+          "type": "cds.Association",
+          "target": "EmployeeService.Skills",
+          "keys": [
+            {
+              "ref": [
+                "Id"
+              ]
+            }
+          ]
+        },
+        "imageUrl": {
+          "@UI.IsImageURL": true,
+          "@UI.HiddenFilter": true,
+          "type": "cds.String"
+        }
+      }
+    },
+    "EmployeeService.SkillImages": {
+      "kind": "entity",
+      "projection": {
+        "from": {
+          "ref": [
+            "com.my.project.SkillImages"
+          ]
+        },
+        "columns": [
+          "*",
+          {
+            "ref": [
+              "skill"
+            ],
+            "cast": {
+              "target": "EmployeeService.Skills"
+            }
+          }
+        ]
+      },
+      "elements": {
+        "skill": {
+          "key": true,
+          "type": "cds.Association",
+          "target": "EmployeeService.Skills",
+          "keys": [
+            {
+              "ref": [
+                "Id"
+              ]
+            }
+          ]
+        },
+        "image": {
+          "@Core.MediaType": {
+            "=": "imageType"
+          },
+          "type": "cds.LargeBinary"
+        },
+        "imageType": {
+          "@Core.IsMediaType": true,
+          "type": "cds.String"
+        }
+      }
+    },
+    "EmployeeService.loadSkillImages": {
+      "kind": "function",
+      "returns": {
+        "type": "cds.Boolean"
+      }
+    },
+    "FlightService": {
+      "@source": "employee-service.cds",
+      "kind": "service"
+    },
+    "FlightService.SFlight": {
+      "kind": "entity",
+      "projection": {
+        "from": {
+          "ref": [
+            "FLIGHT.SflightView"
+          ]
+        }
+      },
+      "elements": {
+        "Client": {
+          "@title": "MANDT",
+          "type": "cds.String",
+          "length": 3
+        },
+        "CarrierId": {
+          "@title": "CARRID",
+          "type": "cds.String",
+          "length": 3
+        },
+        "ConnectionId": {
+          "@title": "CONNID",
+          "type": "cds.String",
+          "length": 4
+        },
+        "FlightDate": {
+          "@title": "FLDATE",
+          "type": "cds.String",
+          "length": 8
+        },
+        "Price": {
+          "@title": "PRICE",
+          "type": "cds.Decimal",
+          "precision": 15,
+          "scale": 2,
+          "notNull": true
+        },
+        "Currency": {
+          "@title": "CURRENCY",
+          "type": "cds.String",
+          "length": 5,
+          "notNull": true
+        },
+        "PlaneType": {
+          "@title": "PLANETYPE",
+          "type": "cds.String",
+          "length": 10,
+          "notNull": true
+        },
+        "BookingId": {
+          "@title": "BOOKID",
+          "type": "cds.String",
+          "length": 8
+        },
+        "CustomerId": {
+          "@title": "CUSTOMID",
+          "type": "cds.String",
+          "length": 8
+        },
+        "CustomerType": {
+          "@title": "CUSTTYPE",
+          "type": "cds.String",
+          "length": 1
+        },
+        "PassengerName": {
+          "@title": "PASSNAME",
+          "type": "cds.String",
+          "length": 25
+        }
+      }
+    },
+    "FlightService.SFlightExt": {
+      "kind": "entity",
+      "@restrict": [
+        {
+          "grant": "READ",
+          "where": "001 = Client",
+          "_where": "[{\"val\":1},\"=\",{\"ref\":[\"Client\"]}]"
+        }
+      ],
+      "projection": {
+        "from": {
+          "ref": [
+            "FLIGHT.SFlightExt"
+          ]
+        }
+      },
+      "elements": {
+        "Client": {
+          "@title": "MANDT",
+          "type": "cds.String",
+          "length": 3
+        },
+        "CarrierId": {
+          "@title": "CARRID",
+          "type": "cds.String",
+          "length": 3
+        },
+        "ConnectionId": {
+          "@title": "CONNID",
+          "type": "cds.String",
+          "length": 4
+        },
+        "FlightDate": {
+          "@title": "FLDATE",
+          "type": "cds.String",
+          "length": 8
+        },
+        "Price": {
+          "@title": "PRICE",
+          "type": "cds.Decimal",
+          "precision": 15,
+          "scale": 2,
+          "notNull": true
+        },
+        "Currency": {
+          "@title": "CURRENCY",
+          "type": "cds.String",
+          "length": 5,
+          "notNull": true
+        },
+        "PlaneType": {
+          "@title": "PLANETYPE",
+          "type": "cds.String",
+          "length": 10,
+          "notNull": true
+        },
+        "BookingId": {
+          "@title": "BOOKID",
+          "type": "cds.String",
+          "length": 8
+        },
+        "CustomerId": {
+          "@title": "CUSTOMID",
+          "type": "cds.String",
+          "length": 8
+        },
+        "CustomerType": {
+          "@title": "CUSTTYPE",
+          "type": "cds.String",
+          "length": 1
+        },
+        "PassengerName": {
+          "@title": "PASSNAME",
+          "type": "cds.String",
+          "length": 25
+        }
+      }
+    },
+    "Language": {
+      "kind": "type",
+      "@title": "{i18n>Language}",
+      "@description": "{i18n>LanguageCode.Description}",
+      "type": "cds.Association",
+      "target": "sap.common.Languages",
+      "keys": [
+        {
+          "ref": [
+            "code"
+          ]
+        }
+      ]
+    },
+    "Currency": {
+      "kind": "type",
+      "@title": "{i18n>Currency}",
+      "@description": "{i18n>CurrencyCode.Description}",
+      "type": "cds.Association",
+      "target": "sap.common.Currencies",
+      "keys": [
+        {
+          "ref": [
+            "code"
+          ]
+        }
+      ]
+    },
+    "Country": {
+      "kind": "type",
+      "@title": "{i18n>Country}",
+      "@description": "{i18n>CountryCode.Description}",
+      "type": "cds.Association",
+      "target": "sap.common.Countries",
+      "keys": [
+        {
+          "ref": [
+            "code"
+          ]
+        }
+      ]
+    },
+    "sap.common": {
+      "kind": "context"
+    },
+    "sap.common.Languages": {
+      "kind": "entity",
+      "@cds.autoexpose": true,
+      "@cds.persistence.skip": "if-unused",
+      "@UI.Identification": [
+        {
+          "Value": {
+            "=": "name"
+          }
+        }
+      ],
+      "@cds.odata.valuelist": true,
+      "includes": [
+        "sap.common.CodeList"
+      ],
+      "elements": {
+        "name": {
+          "@title": "{i18n>Name}",
+          "localized": true,
+          "type": "cds.String",
+          "length": 255
+        },
+        "descr": {
+          "@title": "{i18n>Description}",
+          "localized": true,
+          "type": "cds.String",
+          "length": 1000
+        },
+        "code": {
+          "@title": "{i18n>LanguageCode}",
+          "@Common.Text": {
+            "=": "name"
+          },
+          "key": true,
+          "type": "cds.String",
+          "length": 14
+        },
+        "texts": {
+          "type": "cds.Composition",
+          "cardinality": {
+            "max": "*"
+          },
+          "target": "sap.common.Languages.texts",
+          "on": [
+            {
+              "ref": [
+                "texts",
+                "code"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "code"
+              ]
+            }
+          ]
+        },
+        "localized": {
+          "type": "cds.Association",
+          "target": "sap.common.Languages.texts",
+          "on": [
+            {
+              "ref": [
+                "localized",
+                "code"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "code"
+              ]
+            },
+            "and",
+            {
+              "ref": [
+                "localized",
+                "locale"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "$user",
+                "locale"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "sap.common.Countries": {
+      "kind": "entity",
+      "@cds.autoexpose": true,
+      "@cds.persistence.skip": "if-unused",
+      "@UI.Identification": [
+        {
+          "Value": {
+            "=": "name"
+          }
+        }
+      ],
+      "@cds.odata.valuelist": true,
+      "includes": [
+        "sap.common.CodeList"
+      ],
+      "elements": {
+        "name": {
+          "@title": "{i18n>Name}",
+          "localized": true,
+          "type": "cds.String",
+          "length": 255
+        },
+        "descr": {
+          "@title": "{i18n>Description}",
+          "localized": true,
+          "type": "cds.String",
+          "length": 1000
+        },
+        "code": {
+          "@title": "{i18n>CountryCode}",
+          "@Common.Text": {
+            "=": "name"
+          },
+          "key": true,
+          "type": "cds.String",
+          "length": 3
+        },
+        "texts": {
+          "type": "cds.Composition",
+          "cardinality": {
+            "max": "*"
+          },
+          "target": "sap.common.Countries.texts",
+          "on": [
+            {
+              "ref": [
+                "texts",
+                "code"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "code"
+              ]
+            }
+          ]
+        },
+        "localized": {
+          "type": "cds.Association",
+          "target": "sap.common.Countries.texts",
+          "on": [
+            {
+              "ref": [
+                "localized",
+                "code"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "code"
+              ]
+            },
+            "and",
+            {
+              "ref": [
+                "localized",
+                "locale"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "$user",
+                "locale"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "sap.common.Currencies": {
+      "kind": "entity",
+      "@cds.autoexpose": true,
+      "@cds.persistence.skip": "if-unused",
+      "@UI.Identification": [
+        {
+          "Value": {
+            "=": "name"
+          }
+        }
+      ],
+      "@cds.odata.valuelist": true,
+      "includes": [
+        "sap.common.CodeList"
+      ],
+      "elements": {
+        "name": {
+          "@title": "{i18n>Name}",
+          "localized": true,
+          "type": "cds.String",
+          "length": 255
+        },
+        "descr": {
+          "@title": "{i18n>Description}",
+          "localized": true,
+          "type": "cds.String",
+          "length": 1000
+        },
+        "code": {
+          "@title": "{i18n>CurrencyCode}",
+          "@Common.Text": {
+            "=": "name"
+          },
+          "key": true,
+          "type": "cds.String",
+          "length": 3
+        },
+        "symbol": {
+          "@title": "{i18n>CurrencySymbol}",
+          "type": "cds.String",
+          "length": 5
+        },
+        "texts": {
+          "type": "cds.Composition",
+          "cardinality": {
+            "max": "*"
+          },
+          "target": "sap.common.Currencies.texts",
+          "on": [
+            {
+              "ref": [
+                "texts",
+                "code"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "code"
+              ]
+            }
+          ]
+        },
+        "localized": {
+          "type": "cds.Association",
+          "target": "sap.common.Currencies.texts",
+          "on": [
+            {
+              "ref": [
+                "localized",
+                "code"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "code"
+              ]
+            },
+            "and",
+            {
+              "ref": [
+                "localized",
+                "locale"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "$user",
+                "locale"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "sap.common.CodeList": {
+      "kind": "aspect",
+      "@cds.autoexpose": true,
+      "@cds.persistence.skip": "if-unused",
+      "@UI.Identification": [
+        {
+          "Value": {
+            "=": "name"
+          }
+        }
+      ],
+      "@cds.odata.valuelist": true,
+      "elements": {
+        "name": {
+          "@title": "{i18n>Name}",
+          "localized": true,
+          "type": "cds.String",
+          "length": 255
+        },
+        "descr": {
+          "@title": "{i18n>Description}",
+          "localized": true,
+          "type": "cds.String",
+          "length": 1000
+        }
+      }
+    },
+    "cuid": {
+      "kind": "aspect",
+      "elements": {
+        "ID": {
+          "key": true,
+          "type": "cds.UUID"
+        }
+      }
+    },
+    "managed": {
+      "kind": "aspect",
+      "elements": {
+        "createdAt": {
+          "@cds.on.insert": {
+            "=": "$now"
+          },
+          "@UI.HiddenFilter": true,
+          "@Core.Immutable": true,
+          "@title": "{i18n>CreatedAt}",
+          "@readonly": true,
+          "@odata.on.insert": {
+            "#": "now"
+          },
+          "type": "cds.Timestamp"
+        },
+        "createdBy": {
+          "@cds.on.insert": {
+            "=": "$user"
+          },
+          "@UI.HiddenFilter": true,
+          "@Core.Immutable": true,
+          "@title": "{i18n>CreatedBy}",
+          "@readonly": true,
+          "@odata.on.insert": {
+            "#": "user"
+          },
+          "@description": "{i18n>UserID.Description}",
+          "type": "User",
+          "length": 255
+        },
+        "modifiedAt": {
+          "@cds.on.insert": {
+            "=": "$now"
+          },
+          "@cds.on.update": {
+            "=": "$now"
+          },
+          "@UI.HiddenFilter": true,
+          "@title": "{i18n>ChangedAt}",
+          "@readonly": true,
+          "@odata.on.update": {
+            "#": "now"
+          },
+          "type": "cds.Timestamp"
+        },
+        "modifiedBy": {
+          "@cds.on.insert": {
+            "=": "$user"
+          },
+          "@cds.on.update": {
+            "=": "$user"
+          },
+          "@UI.HiddenFilter": true,
+          "@title": "{i18n>ChangedBy}",
+          "@readonly": true,
+          "@odata.on.update": {
+            "#": "user"
+          },
+          "@description": "{i18n>UserID.Description}",
+          "type": "User",
+          "length": 255
+        }
+      }
+    },
+    "temporal": {
+      "kind": "aspect",
+      "elements": {
+        "validFrom": {
+          "@cds.valid.from": true,
+          "type": "cds.Timestamp"
+        },
+        "validTo": {
+          "@cds.valid.to": true,
+          "type": "cds.Timestamp"
+        }
+      }
+    },
+    "User": {
+      "kind": "type",
+      "@title": "{i18n>UserID}",
+      "@description": "{i18n>UserID.Description}",
+      "type": "cds.String",
+      "length": 255
+    },
+    "extensible": {
+      "kind": "aspect",
+      "elements": {
+        "extensions__": {
+          "@cds.api.ignore": true,
+          "type": "cds.String"
+        }
+      }
+    },
+    "sap.common.Languages.texts": {
+      "kind": "entity",
+      "@odata.draft.enabled": false,
+      "elements": {
+        "locale": {
+          "key": true,
+          "type": "cds.String",
+          "length": 14
+        },
+        "name": {
+          "@title": "{i18n>Name}",
+          "localized": null,
+          "type": "cds.String",
+          "length": 255
+        },
+        "descr": {
+          "@title": "{i18n>Description}",
+          "localized": null,
+          "type": "cds.String",
+          "length": 1000
+        },
+        "code": {
+          "@odata.containment.ignore": true,
+          "@title": "{i18n>LanguageCode}",
+          "@Common.Text": {
+            "=": "name"
+          },
+          "key": true,
+          "type": "cds.String",
+          "length": 14
+        }
+      }
+    },
+    "sap.common.Countries.texts": {
+      "kind": "entity",
+      "@odata.draft.enabled": false,
+      "elements": {
+        "locale": {
+          "key": true,
+          "type": "cds.String",
+          "length": 14
+        },
+        "name": {
+          "@title": "{i18n>Name}",
+          "localized": null,
+          "type": "cds.String",
+          "length": 255
+        },
+        "descr": {
+          "@title": "{i18n>Description}",
+          "localized": null,
+          "type": "cds.String",
+          "length": 1000
+        },
+        "code": {
+          "@odata.containment.ignore": true,
+          "@title": "{i18n>CountryCode}",
+          "@Common.Text": {
+            "=": "name"
+          },
+          "key": true,
+          "type": "cds.String",
+          "length": 3
+        }
+      }
+    },
+    "sap.common.Currencies.texts": {
+      "kind": "entity",
+      "@odata.draft.enabled": false,
+      "elements": {
+        "locale": {
+          "key": true,
+          "type": "cds.String",
+          "length": 14
+        },
+        "name": {
+          "@title": "{i18n>Name}",
+          "localized": null,
+          "type": "cds.String",
+          "length": 255
+        },
+        "descr": {
+          "@title": "{i18n>Description}",
+          "localized": null,
+          "type": "cds.String",
+          "length": 1000
+        },
+        "code": {
+          "@odata.containment.ignore": true,
+          "@title": "{i18n>CurrencyCode}",
+          "@Common.Text": {
+            "=": "name"
+          },
+          "key": true,
+          "type": "cds.String",
+          "length": 3
+        }
+      }
+    }
+  },
+  "meta": {
+    "creator": "CDS Compiler v2.12.0",
+    "flavor": "inferred"
+  },
+  "$version": "2.0"
+}

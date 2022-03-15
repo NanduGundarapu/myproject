@@ -55,15 +55,15 @@ module.exports = async (o) => {
             app.logger.error(err);
         })
 
-    cds.serve('UserService')
-        .from(global.__base + "/gen/csn.json")
-        .to("rest")
-        .at(restURL + 'UserService')
-        //.with(require("./employee-service"))          
-        .in(app)
-        .catch((err) => {
-            app.logger.error(err);
-        })
+    // cds.serve('UserService')
+    //     .from(global.__base + "/gen/csn.json")
+    //     .to("rest")
+    //     .at(restURL + 'UserService')
+    //     //.with(require("./employee-service"))          
+    //     .in(app)
+    //     .catch((err) => {
+    //         app.logger.error(err);
+    //     })
 
     
 

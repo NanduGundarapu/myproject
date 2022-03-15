@@ -5,7 +5,6 @@ using { FLIGHT  } from '../db/SFLIGHT';
 service EmployeeService {
 
   @odata.draft.enabled
-  @requires : 'authenticated-user'
   entity Employees as projection on my.Employees;
 
   entity Skills as projection on my.Skills;
