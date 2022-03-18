@@ -43,10 +43,10 @@
 				}
 			},
 			applications: {
-				"browze-tile": { 
-					title: "Employees",
-					description: "",
-					additionalInformation: "SAPUI5.Component=emp.browze",
+				"myprojectempskills-tile": {
+					title: "Employee Skills",
+					description: "A Fiori application.",
+					additionalInformation: "SAPUI5.Component=myproject.empskills",
 					applicationType: "URL",
 					url: "../"
 				}
@@ -54,21 +54,25 @@
 		};
 	</script>
 
-	<script src="https://ui5.sap.com/test-resources/sap/ushell/bootstrap/sandbox.js" id="sap-ushell-bootstrap"></script>
+	<script src="https://sapui5.hana.ondemand.com/1.99.0/test-resources/sap/ushell/bootstrap/sandbox.js" id="sap-ushell-bootstrap"></script>
 	<!-- Bootstrap the UI5 core library -->
 	<script id="sap-ui-bootstrap"
-		src="https://ui5.sap.com/resources/sap-ui-core.js"
+		src="https://sapui5.hana.ondemand.com/1.99.0/resources/sap-ui-core.js"
 		data-sap-ui-libs="sap.m, sap.ushell, sap.fe.templates"
 		data-sap-ui-async="true"
 		data-sap-ui-preload="async"
 		data-sap-ui-theme="sap_fiori_3"
 		data-sap-ui-compatVersion="edge"
 		data-sap-ui-language="en"
-		data-sap-ui-resourceroots='{"emp.browze": "../"}'
+		data-sap-ui-resourceroots='{"myproject.empskills": "../"}'
 		data-sap-ui-frameOptions="allow"> // NON-SECURE setting for testing environment
 		</script>
-		<script src="../utils/locate-reuse-libs.js" data-sap-ui-manifest-uri="../manifest.json">
-		</script>
+	<script type="text/javascript">
+		sap.ui.getCore().attachInit(function () {
+			// initialize the ushell sandbox component
+			sap.ushell.Container.createRenderer().placeAt("content");
+		});
+	</script>
 </head>
 
 <!-- UI Content -->

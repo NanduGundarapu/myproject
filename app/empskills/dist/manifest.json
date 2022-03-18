@@ -1,7 +1,7 @@
 {
     "_version": "1.32.0",
     "sap.app": {
-        "id": "emp.browze",
+        "id": "myproject.empskills",
         "type": "application",
         "i18n": "i18n/i18n.properties",
         "applicationVersion": {
@@ -11,7 +11,7 @@
         "description": "{{appDescription}}",
         "dataSources": {
             "mainService": {
-                "uri": "/employee/",
+                "uri": "employee/",
                 "type": "OData",
                 "settings": {
                     "odataVersion": "4.0"
@@ -23,8 +23,20 @@
         "sourceTemplate": {
             "id": "ui5template.fiorielements.v4.lrop",
             "version": "1.0.0"
+        },
+        "crossNavigation": {
+            "inbounds": {
+                "intent1": {
+                    "signature": {
+                        "parameters": {},
+                        "additionalParameters": "allowed"
+                    },
+                    "semanticObject": "Dynamic",
+                    "action": "display"
+                }
+            }
         }
-    },  
+    },
     "sap.ui": {
         "technology": "UI5",
         "icons": {
@@ -47,7 +59,7 @@
             "css": []
         },
         "dependencies": {
-            "minUI5Version": "1.97.2",
+            "minUI5Version": "1.99.0",
             "libs": {
                 "sap.ui.core": {},
                 "sap.fe.templates": {}
@@ -84,6 +96,11 @@
                     "pattern": "Employees({key}):?query:",
                     "name": "EmployeesObjectPage",
                     "target": "EmployeesObjectPage"
+                },
+                {
+                    "pattern": "Employees({key})/NavToSkills({key2}):?query:",
+                    "name": "Emp2SkillObjectPage",
+                    "target": "Emp2SkillObjectPage"
                 }
             ],
             "targets": {
@@ -112,7 +129,25 @@
                     "options": {
                         "settings": {
                             "editableHeaderContent": false,
-                            "entitySet": "Employees"
+                            "entitySet": "Employees",
+                            "navigation": {
+                                "NavToSkills": {
+                                    "detail": {
+                                        "route": "Emp2SkillObjectPage"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "Emp2SkillObjectPage": {
+                    "type": "Component",
+                    "id": "Emp2SkillObjectPage",
+                    "name": "sap.fe.templates.ObjectPage",
+                    "options": {
+                        "settings": {
+                            "editableHeaderContent": false,
+                            "entitySet": "Emp2Skill"
                         }
                     }
                 }
@@ -135,5 +170,9 @@
         "_version": "1.1.0",
         "registrationIds": [],
         "archeType": "transactional"
+    },
+    "sap.cloud": {
+        "public": true,
+        "service": "myproject.EmpSkills"
     }
 }

@@ -1,118 +1,169 @@
-_schema-version: '3.1'
+_schema-version: "3.1"
 ID: myproject
-version: 1.0.0
 description: My Employees CAP project
+version: 1.1.7
 parameters:
+  deploy_mode: html5-repo
   enable-parallel-deployments: true
+  
 build-parameters:
   before-all:
-    - builder: custom
-      commands:
-        - npm install
-        - npx cds build
-
-
+  - builder: custom
+    commands:
+    - npm install
+    - npx cds build
+    
 modules:
-  # - name: myproject-user-db-deployer
-  #   parameters:
-  #     buildpack: nodejs_buildpack
-  #   type: hdb
-  #   path: user_db
-  #   requires:
-  #     - name: myproject-user-db
 
-
-  - name: cap-samples-app-router
-    type: approuter.nodejs
-    path: app
-    parameters:
-      disk-quota: 256M
-      memory: 256M
-    requires:
-      - name: cap-samples-uaa
-      - name: srv-api
-        group: destinations
-        properties:
-          name: srv-api
-          url: "~{srv-url}"
-          forwardAuthToken: true
-
-
-  - name: myproject-srv
-    type: nodejs
-    path: srv
-    parameters:
-      disk-quota: 1024M
-      memory: 512M
-      buildpack: nodejs_buildpack
+- name: myproject-srv
+  type: nodejs
+  path: srv
+  properties:
+    EXIT: 1
+  requires:
+  - name: myproject-db
+  - name: cap-samples-uaa
+  provides:
+  - name: srv-api
     properties:
-      EXIT: 1  # required by deploy.js task to terminate
-    requires:
-      - name: myproject-db
-      - name: cap-samples-uaa
-    provides:
-      - name: srv-api
-        properties:
-          srv-url: '${default-url}'
-  
+      srv-url: ${default-url}
+  parameters:
+    buildpack: nodejs_buildpack
+    disk-quota: 1024M
+    memory: 512M
 
-  - name: myproject-db-deployer
-    type: hdb
-    path: db
+- name: myproject-db-deployer
+  type: hdb
+  path: db
+  requires:
+  - name: myproject-db
+    properties:
+      TARGET_CONTAINER: ~{hdi-service-name}
+  - name: cross-container-service-1
+    group: SERVICE_REPLACEMENTS
+    properties:
+      key: ServiceName_1
+      service: ~{the-service-name}
+  parameters:
+    buildpack: nodejs_buildpack
+
+- name: myproject-destination-content
+  type: com.sap.application.content
+  requires:
+  - name: myproject-destination-service
     parameters:
-      buildpack: nodejs_buildpack
+      content-target: true
+  - name: myproject_html_repo_host
+    parameters:
+      service-key:
+        name: myproject_html_repo_host-key
+  - name: cap-samples-uaa
+    parameters:
+      service-key:
+        name: cap-samples-uaa-key
+  parameters:
+    content:
+      instance:
+        destinations:
+        - Name: myproject_EmpSkills_myproject_html_repo_host
+          ServiceInstanceName: myproject-html5-app-host-service
+          ServiceKeyName: myproject_html_repo_host-key
+          sap.cloud.service: myproject.EmpSkills
+        - Authentication: OAuth2UserTokenExchange
+          Name: myproject_EmpSkills_cap_samples_uaa
+          ServiceInstanceName: cap-samples-uaa
+          ServiceKeyName: cap-samples-uaa-key
+          sap.cloud.service: myproject.EmpSkills
+        existing_destinations_policy: ignore
+  build-parameters:
+    no-source: true
+
+- name: myproject-app-content
+  type: com.sap.application.content
+  path: .
+  requires:
+  - name: myproject_html_repo_host
+    parameters:
+      content-target: true
+  build-parameters:
+    build-result: resources
     requires:
-      - name: myproject-db
-        properties:
-          TARGET_CONTAINER: '~{hdi-service-name}'
-      - name: cross-container-service-1
-        group: SERVICE_REPLACEMENTS
-        properties:
-          key: ServiceName_1
-          service: '~{the-service-name}'
-      # - name: myproject-user-db
-      #   group: SERVICE_REPLACEMENTS
-      #   properties:
-      #     key: hdi-user-service
-      #     service: '~{user-container-name}'
+    - artifacts:
+      - myprojectempskills.zip
+      name: myprojectempskills
+      target-path: resources/
+
+- name: myprojectempskills
+  type: html5
+  path: app/empskills
+  build-parameters:
+    build-result: dist
+    builder: custom
+    commands:
+    - npm install
+    - npm run build:cf
+    supported-platforms: []
 
 resources:
-  - name: myproject-db
-    type: com.sap.xs.hdi-container
-    parameters:
-      service: hana
-      service-plan: hdi-shared
-    properties:
-      hdi-service-name: '${service-name}'
 
-  # - name: myproject-user-db
-  #   type: com.sap.xs.hdi-container
-  #   parameters:
-  #     service: hana
-  #     service-plan: hdi-shared
-  #   properties:
-  #     user-container-name: '${service-name}'
+- name: myproject-db
+  type: com.sap.xs.hdi-container
+  parameters:
+    service: hana
+    service-plan: hdi-shared
+  properties:
+    hdi-service-name: ${service-name}
 
-  - name: cross-container-service-1
-    type: org.cloudfoundry.existing-service
-    parameters:
-      service-name: CROSS_SCHEMA_SFLIGHT
-    properties:
-      the-service-name: '${service-name}'
+- name: cross-container-service-1
+  type: org.cloudfoundry.existing-service
+  parameters:
+    service-name: CROSS_SCHEMA_SFLIGHT
+  properties:
+    the-service-name: ${service-name}
 
-  - name: cap-samples-uaa
-    type: org.cloudfoundry.managed-service
-    parameters:
-      service: xsuaa
-      service-plan: application
-      config:
-          xsappname: 'cap-samples-uaa-${space}'
-          tenant-mode: dedicated
-      path: ./xs-security.json
+- name: cap-samples-uaa
+  type: org.cloudfoundry.managed-service
+  parameters:
+    config:
+      tenant-mode: dedicated
+      xsappname: cap-samples-uaa-${space}
+    path: ./xs-security.json
+    service: xsuaa
+    service-plan: application
 
-# ------------------------------------------------------------
-  - name: CROSS_SCHEMA_SFLIGHT
-# ------------------------------------------------------------ 
-    type: org.cloudfoundry.existing-service
-    parameters:
-      service-name: CROSS_SCHEMA_SFLIGHT
+- name: CROSS_SCHEMA_SFLIGHT
+  type: org.cloudfoundry.existing-service
+  parameters:
+    service-name: CROSS_SCHEMA_SFLIGHT
+
+- name: myproject-destination-service
+  type: org.cloudfoundry.managed-service
+  parameters:
+    config:
+      HTML5Runtime_enabled: true
+      init_data:
+        instance:
+          destinations:
+          - Authentication: NoAuthentication
+            Name: ui5
+            ProxyType: Internet
+            Type: HTTP
+            URL: https://ui5.sap.com
+          - Authentication: NoAuthentication
+            Name: srv-api
+            ProxyType: Internet
+            Type: HTTP
+            URL: https://01c1614atrial-dev-myproject-srv.cfapps.eu10.hana.ondemand.com
+            HTML5.DynamicDestination: true
+          existing_destinations_policy: update
+      version: 1.0.0
+    service: destination
+    service-name: myproject-destination-service
+    service-plan: lite
+
+- name: myproject_html_repo_host
+  type: org.cloudfoundry.managed-service
+  parameters:
+    service: html5-apps-repo
+    service-name: myproject-html5-app-host-service
+    service-plan: app-host
