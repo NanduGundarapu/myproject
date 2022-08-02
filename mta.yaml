@@ -1,7 +1,7 @@
 _schema-version: "3.1"
 ID: myproject
 description: My Employees CAP project
-version: 1.1.7
+version: 1.0.0
 parameters:
   deploy_mode: html5-repo
   enable-parallel-deployments: true
@@ -18,6 +18,8 @@ modules:
 - name: myproject-srv
   type: nodejs
   path: srv
+  build-parameters:
+    ignore: ["node_modules/"]
   properties:
     EXIT: 1
   requires:
@@ -35,15 +37,12 @@ modules:
 - name: myproject-db-deployer
   type: hdb
   path: db
+  build-parameters:
+    ignore: ["node_modules/"]
   requires:
   - name: myproject-db
     properties:
       TARGET_CONTAINER: ~{hdi-service-name}
-  - name: cross-container-service-1
-    group: SERVICE_REPLACEMENTS
-    properties:
-      key: ServiceName_1
-      service: ~{the-service-name}
   parameters:
     buildpack: nodejs_buildpack
 
@@ -53,6 +52,8 @@ modules:
   - name: myproject-destination-service
     parameters:
       content-target: true
+      service-key:
+        name: myproject-destination-sk
   - name: myproject_html_repo_host
     parameters:
       service-key:
@@ -69,24 +70,28 @@ modules:
           ServiceInstanceName: myproject-html5-app-host-service
           ServiceKeyName: myproject_html_repo_host-key
           sap.cloud.service: myproject.EmpSkills
-        - Authentication: OAuth2UserTokenExchange
-          Name: myproject_EmpSkills_cap_samples_uaa
+        - Name: myproject_EmpSkills_cap_samples_uaa
+          Authentication: OAuth2UserTokenExchange
           ServiceInstanceName: cap-samples-uaa
           ServiceKeyName: cap-samples-uaa-key
           sap.cloud.service: myproject.EmpSkills
         existing_destinations_policy: ignore
   build-parameters:
     no-source: true
+    ignore: ["node_modules/"]
 
-- name: myproject-app-content
+- name: myproject-ui-deployer
   type: com.sap.application.content
   path: .
   requires:
   - name: myproject_html_repo_host
     parameters:
+      service-key:
+        name: myproject_html_repo_host-key
       content-target: true
   build-parameters:
     build-result: resources
+    ignore: ["node_modules/"]
     requires:
     - artifacts:
       - myprojectempskills.zip
@@ -97,6 +102,7 @@ modules:
   type: html5
   path: app/empskills
   build-parameters:
+    ignore: ["node_modules/"]
     build-result: dist
     builder: custom
     commands:
@@ -114,12 +120,6 @@ resources:
   properties:
     hdi-service-name: ${service-name}
 
-- name: cross-container-service-1
-  type: org.cloudfoundry.existing-service
-  parameters:
-    service-name: CROSS_SCHEMA_SFLIGHT
-  properties:
-    the-service-name: ${service-name}
 
 - name: cap-samples-uaa
   type: org.cloudfoundry.managed-service
@@ -131,10 +131,6 @@ resources:
     service: xsuaa
     service-plan: application
 
-- name: CROSS_SCHEMA_SFLIGHT
-  type: org.cloudfoundry.existing-service
-  parameters:
-    service-name: CROSS_SCHEMA_SFLIGHT
 
 - name: myproject-destination-service
   type: org.cloudfoundry.managed-service

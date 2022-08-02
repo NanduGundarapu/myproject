@@ -84,9 +84,6 @@
             "$XSAPPNAME.Delete",
             "$XSAPPNAME.Display",
             "$XSAPPNAME.Admin"
-        ],
-        "attribute-references": [
-            "client"
         ]
     }
   ]

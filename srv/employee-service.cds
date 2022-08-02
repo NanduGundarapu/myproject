@@ -1,5 +1,4 @@
 using { com.my.project as my } from '../db/schema';
-using { FLIGHT  } from '../db/SFLIGHT';
 //using { USERDATA_USER_LOCAL } from '../db/User';
 
 service EmployeeService {
@@ -19,13 +18,13 @@ service EmployeeService {
 
 }
 
-service FlightService{
+// service FlightService{
 
-    entity SFlight as projection on FLIGHT.SflightView;
+//     entity SFlight as projection on FLIGHT.SflightView;
 
-    entity SFlightExt as projection on FLIGHT.SFlightExt;
+//     entity SFlightExt as projection on FLIGHT.SFlightExt;
     
-}
+// }
 
 // service UserService {
 

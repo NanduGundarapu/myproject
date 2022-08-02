@@ -73,7 +73,7 @@ module.exports = cds.service.impl(function(){
 
     function mapDesignation(employee){
         if(employee.experience > 3 && employee.experience < 7) employee.designation = 'Consultant';
-        else if(employee.experience > 7) employee.designation = 'Senior Consultant';
+        else if(employee.experience >= 7) employee.designation = 'Senior Consultant';
         else employee.designation = 'Junior Consultant';
         return employee;
     }
